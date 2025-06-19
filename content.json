@@ -1,0 +1,82 @@
+{
+  "es": {
+    "hero": {
+      "title": "Vicmano",
+      "subtitle": "Un viaje musical del minimal al éxtasis electrónico",
+      "youtube": "YouTube",
+      "instagram": "Instagram"
+    },
+    "about": {
+      "title": "Sobre mí",
+      "text": "Soy Vicmano, DJ de música electrónica enfocado en Tech House, Minimal Techno y Hard Techno. Comencé en 2019 como un juego, y sin darme cuenta pasaba horas semanales mezclando. Durante la pandemia empecé a hacer streamings cada viernes, compartiendo música y presentando a otros DJs. Desde entonces, toqué en fiestas privadas y eventos públicos en ciudades como Tandil, Necochea, Bahía Blanca y Almería (España). Mi filosofía con la música es crear un viaje emocional que eleve la energía del público, desde la contemplación hasta el baile explosivo."
+    },
+    "gallery": {
+      "title": "Galería",
+      "text": "Explorá mis momentos en vivo, sets y la energía de cada presentación.",
+      "filter": {
+        "all": "Todo",
+        "photos": "Fotos",
+        "videos": "Videos"
+      }
+    },
+    "instagram": {
+      "title": "Instagram",
+      "text": "Seguime en Instagram para ver detrás de escena, flyers y la energía de cada evento."
+    },
+    "shows": {
+      "title": "Agenda",
+      "upcoming": "Próximos shows:",
+      "noUpcoming": "No hay shows programados por el momento. ¡Volvé pronto para ver las próximas fechas!"
+    },
+    "presskit": {
+      "title": "Presskit",
+      "text": "Descargá mi presskit con rider técnico, fotos, logos y contacto para contrataciones.",
+      "button": "Descargar Presskit"
+    },
+    "contact": {
+      "title": "Contacto",
+      "text": "¿Querés contratarme o colaborar? Completá el formulario o escribime directamente a:",
+      "email": "contact@vicmano.com"
+    }
+  },
+  "en": {
+    "hero": {
+      "title": "Vicmano",
+      "subtitle": "A musical journey from minimal to electrifying dance",
+      "youtube": "YouTube",
+      "instagram": "Instagram"
+    },
+    "about": {
+      "title": "About",
+      "text": "I'm Vicmano, an electronic music DJ focused on Tech House, Minimal Techno, and Hard Techno. I started in 2019 just for fun, and suddenly I found myself mixing for hours each week. During the pandemic, I streamed live sets every Friday, sharing music and showcasing fellow DJs. Since then, I've performed at private parties and public events in cities like Tandil, Necochea, Bahía Blanca, and Almería (Spain). My musical philosophy is to create an emotional journey that lifts the audience from calm contemplation to explosive dancing."
+    },
+    "gallery": {
+      "title": "Gallery",
+      "text": "Dive into my live moments, sets, and the energy of every performance.",
+      "filter": {
+        "all": "All",
+        "photos": "Photos",
+        "videos": "Videos"
+      }
+    },
+    "instagram": {
+      "title": "Instagram",
+      "text": "Follow me on Instagram for behind-the-scenes, flyers, and raw event energy."
+    },
+    "shows": {
+      "title": "Shows",
+      "upcoming": "Upcoming shows:",
+      "noUpcoming": "No upcoming shows at the moment. Check back soon for new dates!"
+    },
+    "presskit": {
+      "title": "Presskit",
+      "text": "Download my presskit with technical rider, photos, logos, and booking contact.",
+      "button": "Download Presskit"
+    },
+    "contact": {
+      "title": "Contact",
+      "text": "Want to book or collaborate? Fill out the form or reach out directly at:",
+      "email": "contact@vicmano.com"
+    }
+  }
+}
