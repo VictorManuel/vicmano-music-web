@@ -1,15 +1,13 @@
-"use client"
-
-import { useEffect, useState, useRef } from "react"
+import { useEffect, useState, useRef, FC } from "react"
 import { useLanguage } from "../context/LanguageContext"
 import ParticleBackground from "./ParticleBackground"
 import { motion } from "framer-motion"
 import { Instagram, Youtube } from "lucide-react"
 
-export default function HeroSection() {
+const HeroSection: FC = () => {
   const { t } = useLanguage()
   const [scrollY, setScrollY] = useState(0)
-  const heroRef = useRef(null)
+  const heroRef = useRef<HTMLElement>(null)
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
@@ -153,3 +151,5 @@ export default function HeroSection() {
     </section>
   )
 }
+
+export default HeroSection 

@@ -1,10 +1,9 @@
-"use client"
-
 import { useLanguage } from "../context/LanguageContext"
 import { motion } from "framer-motion"
 import { Download, FileText, ImageIcon, Music } from "lucide-react"
+import { FC } from "react"
 
-export default function PresskitSection() {
+const PresskitSection: FC = () => {
   const { t } = useLanguage()
 
   return (
@@ -139,3 +138,5 @@ export default function PresskitSection() {
     </section>
   )
 }
+
+export default PresskitSection 

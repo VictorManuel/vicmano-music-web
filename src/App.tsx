@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import { LanguageProvider } from "./context/LanguageContext"
 import Header from "./components/Header"
 import HeroSection from "./components/HeroSection"
@@ -11,7 +12,7 @@ import Footer from "./components/Footer"
 import contentData from "./content.json"
 import "./styles/globals.css"
 
-function App() {
+const App: FC = () => {
   return (
     <LanguageProvider initialContent={contentData}>
       <div className="App">
@@ -31,4 +32,4 @@ function App() {
   )
 }
 
-export default App
+export default App 

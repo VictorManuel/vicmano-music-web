@@ -1,8 +1,8 @@
-import React from 'react'
+import { FC } from 'react'
 import { useFetch } from '../hooks/useFetch'
 
 // Ejemplo de uso del hook useFetch con refetch
-const ExampleFetchComponent = () => {
+const ExampleFetchComponent: FC = () => {
   // Ejemplo 1: Auto-fetch al cargar el componente
   const { 
     data: autoData, 

@@ -1,14 +1,19 @@
-"use client"
-
 import { useLanguage } from "../context/LanguageContext"
 import { motion } from "framer-motion"
 import { Instagram } from "lucide-react"
+import { FC } from "react"
 
-export default function InstagramSection() {
+interface InstagramPost {
+  id: number
+  imageUrl: string
+  link: string
+}
+
+const InstagramSection: FC = () => {
   const { t } = useLanguage()
 
   // Placeholder para posts de Instagram
-  const instagramPosts = Array(6)
+  const instagramPosts: InstagramPost[] = Array(6)
     .fill(null)
     .map((_, i) => ({
       id: i,
@@ -73,3 +78,5 @@ export default function InstagramSection() {
     </section>
   )
 }
+
+export default InstagramSection 

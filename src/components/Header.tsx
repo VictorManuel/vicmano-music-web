@@ -1,10 +1,13 @@
-"use client"
-
-import { useState, useEffect } from "react"
+import { useState, useEffect, FC } from "react"
 import { useLanguage } from "../context/LanguageContext"
 import { Menu, X } from "lucide-react"
 
-export default function Header() {
+interface NavLink {
+  href: string
+  label: string
+}
+
+const Header: FC = () => {
   const { language, setLanguage, t } = useLanguage()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
@@ -29,7 +32,7 @@ export default function Header() {
     setLanguage(language === "en" ? "es" : "en")
   }
 
-  const scrollToSection = (sectionId) => {
+  const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId)
     if (element) {
       element.scrollIntoView({ behavior: "smooth" })
@@ -49,7 +52,7 @@ export default function Header() {
     )
   }
 
-  const navLinks = [
+  const navLinks: NavLink[] = [
     { href: "about", label: t("title", "about") },
     { href: "gallery", label: t("title", "gallery") },
     { href: "instagram", label: t("title", "instagram") },
@@ -122,3 +125,5 @@ export default function Header() {
     </header>
   )
 }
+
+export default Header 

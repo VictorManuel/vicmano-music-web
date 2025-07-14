@@ -1,9 +1,10 @@
-"use client"
-
+import React from 'react';
 import { useLanguage } from "../context/LanguageContext"
 import { motion } from "framer-motion"
 
-export default function AboutSection() {
+const MotionDiv = motion.div;
+
+const AboutSection: React.FC = () => {
   const { t } = useLanguage()
 
   return (
@@ -15,6 +16,7 @@ export default function AboutSection() {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
           className="max-w-6xl mx-auto"
+          // @ts-ignore - framer-motion types issue
         >
           <h2 className="text-4xl md:text-6xl font-audiowide font-bold text-center mb-16 text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-fuchsia-500">
             {t("title", "about")}
@@ -43,3 +45,5 @@ export default function AboutSection() {
     </section>
   )
 }
+
+export default AboutSection 

@@ -1,13 +1,17 @@
-"use client"
-
+import { useState, type ChangeEvent, type FormEvent } from "react"
 import { useLanguage } from "../context/LanguageContext"
-import { motion } from "framer-motion"
+import { motion, type HTMLMotionProps } from "framer-motion"
 import { Mail, Send } from "lucide-react"
-import { useState } from "react"
 
-export default function ContactSection() {
+interface FormState {
+  name: string
+  email: string
+  message: string
+}
+
+const ContactSection: React.FC = () => {
   const { t, language } = useLanguage()
-  const [formState, setFormState] = useState({
+  const [formState, setFormState] = useState<FormState>({
     name: "",
     email: "",
     message: "",
@@ -15,14 +19,14 @@ export default function ContactSection() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitSuccess, setSubmitSuccess] = useState(false)
 
-  const handleChange = (e) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormState({
       ...formState,
       [e.target.name]: e.target.value,
     })
   }
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setIsSubmitting(true)
 
@@ -47,7 +51,7 @@ export default function ContactSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="max-w-4xl mx-auto w-full"
+          // className="max-w-4xl mx-auto w-full"
         >
           <h2 className="text-4xl md:text-6xl font-audiowide font-bold text-center mb-8 text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-fuchsia-500">
             {t("title", "contact")}
@@ -165,3 +169,5 @@ export default function ContactSection() {
     </section>
   )
 }
+
+export default ContactSection 

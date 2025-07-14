@@ -1,18 +1,25 @@
-"use client"
-
+import { useState, useEffect, FC } from "react"
 import { useLanguage } from "../context/LanguageContext"
 import { motion } from "framer-motion"
-import { useState, useEffect } from "react"
 import { Play, X, ChevronLeft, ChevronRight } from "lucide-react"
 
-export default function GallerySection() {
+interface GalleryItem {
+  id: number
+  type: "video" | "photo"
+  src: string
+  thumbnail?: string
+  title: string
+  videoId?: string
+}
+
+const GallerySection: FC = () => {
   const { t } = useLanguage()
-  const [filter, setFilter] = useState("all")
-  const [selectedItem, setSelectedItem] = useState(null)
+  const [filter, setFilter] = useState<"all" | "photos" | "videos">("all")
+  const [selectedItem, setSelectedItem] = useState<GalleryItem | null>(null)
   const [currentIndex, setCurrentIndex] = useState(0)
 
   // Datos de ejemplo para la galería
-  const galleryItems = [
+  const galleryItems: GalleryItem[] = [
     {
       id: 1,
       type: "video",
@@ -74,7 +81,7 @@ export default function GallerySection() {
     return filter === "photos" ? item.type === "photo" : item.type === "video"
   })
 
-  const openModal = (item) => {
+  const openModal = (item: GalleryItem) => {
     const index = filteredItems.findIndex((filteredItem) => filteredItem.id === item.id)
     setCurrentIndex(index)
     setSelectedItem(item)
@@ -100,7 +107,7 @@ export default function GallerySection() {
 
   // Navegación con teclado
   useEffect(() => {
-    const handleKeyDown = (event) => {
+    const handleKeyDown = (event: KeyboardEvent) => {
       if (!selectedItem) return
 
       switch (event.key) {
@@ -145,7 +152,7 @@ export default function GallerySection() {
 
             {/* Filtros */}
             <div className="flex justify-center gap-4 mb-8">
-              {["all", "photos", "videos"].map((filterType) => (
+              {(["all", "photos", "videos"] as const).map((filterType) => (
                 <button
                   key={filterType}
                   onClick={() => setFilter(filterType)}
@@ -249,103 +256,60 @@ export default function GallerySection() {
 
       {/* Modal con navegación */}
       {selectedItem && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-sm">
-          <div className="relative w-full h-full max-w-7xl max-h-[95vh] m-4 flex items-center justify-center">
+        <div className="fixed inset-0 bg-black/90 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="relative max-w-4xl w-full max-h-full">
             {/* Botón cerrar */}
             <button
               onClick={closeModal}
-              className="absolute top-4 right-4 z-20 bg-black/70 hover:bg-black/90 rounded-full p-3 text-white transition-all duration-200 hover:scale-110"
-              aria-label="Cerrar"
+              className="absolute top-4 right-4 z-10 text-white hover:text-fuchsia-400 transition-colors"
             >
-              <X size={24} />
+              <X size={32} />
             </button>
 
-            {/* Flecha izquierda */}
+            {/* Navegación */}
             <button
               onClick={navigateToPrevious}
-              className="absolute left-4 top-1/2 transform -translate-y-1/2 z-20 bg-black/70 hover:bg-black/90 rounded-full p-3 text-white transition-all duration-200 hover:scale-110 disabled:opacity-50"
-              aria-label="Anterior"
-              disabled={filteredItems.length <= 1}
+              className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 text-white hover:text-fuchsia-400 transition-colors"
             >
-              <ChevronLeft size={28} />
+              <ChevronLeft size={32} />
             </button>
-
-            {/* Flecha derecha */}
             <button
               onClick={navigateToNext}
-              className="absolute right-4 top-1/2 transform -translate-y-1/2 z-20 bg-black/70 hover:bg-black/90 rounded-full p-3 text-white transition-all duration-200 hover:scale-110 disabled:opacity-50"
-              aria-label="Siguiente"
-              disabled={filteredItems.length <= 1}
+              className="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 text-white hover:text-fuchsia-400 transition-colors"
             >
-              <ChevronRight size={28} />
+              <ChevronRight size={32} />
             </button>
 
-            {/* Contenido del modal */}
-            <div className="w-full h-full flex items-center justify-center px-16">
-              <motion.div
-                key={selectedItem.id}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.3 }}
-                className="w-full h-full flex items-center justify-center"
-              >
-                {selectedItem.type === "video" ? (
-                  <div className="w-full h-full max-w-5xl aspect-video">
-                    <iframe
-                      src={selectedItem.src}
-                      title={selectedItem.title}
-                      className="w-full h-full rounded-lg"
-                      frameBorder="0"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                    />
-                  </div>
-                ) : (
-                  <img
-                    src={selectedItem.src || "/placeholder.svg"}
-                    alt={selectedItem.title}
-                    className="max-w-full max-h-full object-contain rounded-lg"
+            {/* Contenido */}
+            <div className="bg-purple-900/20 backdrop-blur-sm border border-purple-500/20 rounded-lg overflow-hidden">
+              {selectedItem.type === "video" ? (
+                <div className="aspect-video">
+                  <iframe
+                    src={selectedItem.src}
+                    title={selectedItem.title}
+                    className="w-full h-full"
+                    allowFullScreen
                   />
-                )}
-              </motion.div>
-            </div>
-
-            {/* Información del elemento */}
-            <div className="absolute bottom-4 left-4 right-4 text-center z-10">
-              <div className="bg-black/70 backdrop-blur-sm rounded-lg p-4">
-                <h3 className="text-white font-audiowide text-lg mb-2">{selectedItem.title}</h3>
-                <div className="flex justify-center items-center gap-4 text-white/70 text-sm">
-                  <span>
-                    {currentIndex + 1} / {filteredItems.length}
-                  </span>
-                  <span className="capitalize">{selectedItem.type}</span>
                 </div>
+              ) : (
+                <img
+                  src={selectedItem.src}
+                  alt={selectedItem.title}
+                  className="w-full h-auto max-h-[80vh] object-contain"
+                />
+              )}
+              <div className="p-6">
+                <h3 className="text-2xl font-audiowide font-bold text-white mb-2">{selectedItem.title}</h3>
+                <p className="text-white/70">
+                  {currentIndex + 1} de {filteredItems.length}
+                </p>
               </div>
             </div>
-
-            {/* Indicadores de navegación */}
-            {filteredItems.length > 1 && (
-              <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 z-10">
-                <div className="flex gap-2">
-                  {filteredItems.map((_, index) => (
-                    <button
-                      key={index}
-                      onClick={() => {
-                        setCurrentIndex(index)
-                        setSelectedItem(filteredItems[index])
-                      }}
-                      className={`w-3 h-3 rounded-full transition-all duration-200 ${
-                        index === currentIndex ? "bg-fuchsia-500 scale-125" : "bg-white/30 hover:bg-white/50"
-                      }`}
-                      aria-label={`Ir al elemento ${index + 1}`}
-                    />
-                  ))}
-                </div>
-              </div>
-            )}
           </div>
         </div>
       )}
     </section>
   )
 }
+
+export default GallerySection 

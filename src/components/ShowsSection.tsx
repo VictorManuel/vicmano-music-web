@@ -1,14 +1,22 @@
-"use client"
-
 import { useLanguage } from "../context/LanguageContext"
 import { motion } from "framer-motion"
 import { Calendar, Clock, MapPin } from "lucide-react"
+import { FC } from "react"
 
-export default function ShowsSection() {
+interface Show {
+  id: number
+  date: string
+  venue: string
+  location: string
+  time: string
+  ticketLink: string
+}
+
+const ShowsSection: FC = () => {
   const { t, language } = useLanguage()
 
   // Placeholder para próximos shows
-  const upcomingShows = [
+  const upcomingShows: Show[] = [
     {
       id: 1,
       date: "2025-06-15",
@@ -100,3 +108,5 @@ export default function ShowsSection() {
     </section>
   )
 }
+
+export default ShowsSection 

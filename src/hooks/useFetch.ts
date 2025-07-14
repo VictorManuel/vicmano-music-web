@@ -7,7 +7,7 @@ interface params<T> {
     data: Data<T>
     error: ErrorType
     loading: boolean
-    refetch: () => void
+    refetch: (controller: AbortController) => void
 }
 
 export const useFetch = <T>({ url, autoFetch = true }: { url: string, autoFetch?: boolean }): params<T> => {
@@ -15,11 +15,11 @@ export const useFetch = <T>({ url, autoFetch = true }: { url: string, autoFetch?
     const [error, setError] = useState(null as ErrorType)
     const [loading, setLoading] = useState(false)
 
-    const fetchData = useCallback(async () => {
+    const fetchData = useCallback(async (controller: AbortController) => {
         setLoading(true)
         setError(null)
         try {
-            const response = await fetch(url)
+            const response = await fetch(url, controller)
             if (!response.ok) {
                 throw new Error("Failed to fetch data")
             }
@@ -32,15 +32,22 @@ export const useFetch = <T>({ url, autoFetch = true }: { url: string, autoFetch?
         }
     }, [url])
 
-    const refetch = useCallback(() => {
-        fetchData()
+    const refetch = useCallback((controller: AbortController) => {
+        fetchData(controller)
     }, [fetchData])
 
     useEffect(() => {
+        const controller = new AbortController()
+
         if (autoFetch) {
-            fetchData()
+            refetch(controller)
         }
-    }, [fetchData, autoFetch])
+
+        return () => {
+            controller.abort()
+        }
+
+    }, [fetchData, autoFetch, refetch])
 
     return { data, error, loading, refetch }
 }

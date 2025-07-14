@@ -1,21 +1,20 @@
-"use client"
-
-import { useCallback, useEffect, useState } from "react"
+import { useCallback, useEffect, useState, FC } from "react"
 import Particles from "react-particles"
 import { loadSlim } from "tsparticles-slim"
+import type { Engine, Container } from "tsparticles-engine"
 
-export default function ParticleBackground() {
+const ParticleBackground: FC = () => {
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
     setMounted(true)
   }, [])
 
-  const particlesInit = useCallback(async (engine) => {
+  const particlesInit = useCallback(async (engine: Engine) => {
     await loadSlim(engine)
   }, [])
 
-  const particlesLoaded = useCallback(async (container) => {
+  const particlesLoaded = useCallback(async (container: Container) => {
     // console.log(container)
   }, [])
 
@@ -97,3 +96,5 @@ export default function ParticleBackground() {
     />
   )
 }
+
+export default ParticleBackground 

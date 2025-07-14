@@ -1,9 +1,8 @@
-"use client"
-
 import { useLanguage } from "../context/LanguageContext"
 import { Instagram, Youtube, Mail } from "lucide-react"
+import { FC } from "react"
 
-export default function Footer() {
+const Footer: FC = () => {
   const { language } = useLanguage()
   const currentYear = new Date().getFullYear()
 
@@ -50,7 +49,7 @@ export default function Footer() {
 
         <div className="border-t border-purple-900/30 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-white/60 text-sm mb-4 md:mb-0">
-            &copy; {currentYear} Vicmano.{" "}
+            &copy; {currentYear} Vicmano{" "}
             {language === "en" ? "All rights reserved." : "Todos los derechos reservados."}
           </p>
 
@@ -67,3 +66,5 @@ export default function Footer() {
     </footer>
   )
 }
+
+export default Footer 
