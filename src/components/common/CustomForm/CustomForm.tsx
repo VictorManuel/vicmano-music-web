@@ -1,23 +1,12 @@
 import { useForm, SubmitHandler } from "react-hook-form"
-import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 import InputForm from "./InputForm"
-
-const schema = z.object({
-    name: z.string("requiere texto").min(1, "es requerido" ),
-    email: z.string("requiere correo").email("correo invalido").min(1, "es requerido" ),
-    password: z.string("requiere contraseña").min(6, "contraseña debe tener al menos 6 caracteres").max(100, "contraseña debe tener menos de 100 caracteres"),
-    confirmPassword: z.string("requiere contraseña").min(6, "contraseña debe tener al menos 6 caracteres").max(100, "contraseña debe tener menos de 100 caracteres"),
-}).refine((data) => data.password === data.confirmPassword, {
-    message: "las contraseñas no coinciden",
-    path: ["confirmPassword"],
-})
-
-type FormValues = z.infer<typeof schema>
+import { FormValues, schema } from "../../../models"
 
 const CustomForm = () => {
     const  {control, handleSubmit, formState: {errors}} = useForm<FormValues>({
-        resolver: zodResolver(schema)
+        resolver: zodResolver(schema),
+        mode: "onBlur"
     })
 
     const onSubmit: SubmitHandler<FormValues> = (data) => {
