@@ -1,22 +1,19 @@
-import React from 'react';
-import { useLanguage } from "../context/LanguageContext"
-import { motion } from "framer-motion"
+import {FC} from 'react';
+import { useLanguage } from "../../../context/LanguageContext"
+import { MotionDiv } from '../../common/Motion/MyMotionComponents'
 
-const MotionDiv = motion.div;
-
-const AboutSection: React.FC = () => {
+const AboutSection: FC = () => {
   const { t } = useLanguage()
 
   return (
     <section id="about" className="min-h-screen bg-black snap-section full-section">
-      <div className="container mx-auto px-4 flex items-center justify-center min-h-screen">
-        <motion.div
+      <div className="container mx-auto pt-20 md:pt-0 px-4 flex items-center justify-center min-h-screen">
+        <MotionDiv
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
           className="max-w-6xl mx-auto"
-          // @ts-ignore - framer-motion types issue
         >
           <h2 className="text-4xl md:text-6xl font-audiowide font-bold text-center mb-16 text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-fuchsia-500">
             {t("title", "about")}
@@ -40,7 +37,7 @@ const AboutSection: React.FC = () => {
               <p className="text-white/90 text-xl leading-relaxed text-center lg:text-left">{t("text", "about")}</p>
             </div>
           </div>
-        </motion.div>
+        </MotionDiv>
       </div>
     </section>
   )

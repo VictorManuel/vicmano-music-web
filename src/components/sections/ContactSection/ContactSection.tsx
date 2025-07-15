@@ -1,7 +1,7 @@
-import { useState, type ChangeEvent, type FormEvent } from "react"
-import { useLanguage } from "../context/LanguageContext"
-import { motion, type HTMLMotionProps } from "framer-motion"
+import { FC, useState, type ChangeEvent, type FormEvent } from "react"
+import { useLanguage } from "../../../context/LanguageContext"
 import { Mail, Send } from "lucide-react"
+import { MotionDiv } from '../../common/Motion/MyMotionComponents'
 
 interface FormState {
   name: string
@@ -9,7 +9,7 @@ interface FormState {
   message: string
 }
 
-const ContactSection: React.FC = () => {
+const ContactSection: FC = () => {
   const { t, language } = useLanguage()
   const [formState, setFormState] = useState<FormState>({
     name: "",
@@ -45,13 +45,13 @@ const ContactSection: React.FC = () => {
 
   return (
     <section id="contact" className="min-h-screen bg-gradient-to-b from-black to-purple-950 snap-section full-section">
-      <div className="container mx-auto px-4 flex items-center justify-center min-h-screen">
-        <motion.div
+      <div className="container pt-20 md:pt-0 mx-auto px-4 flex items-center justify-center min-h-screen">
+        <MotionDiv
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          // className="max-w-4xl mx-auto w-full"
+          className="max-w-4xl mx-auto w-full"
         >
           <h2 className="text-4xl md:text-6xl font-audiowide font-bold text-center mb-8 text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-fuchsia-500">
             {t("title", "contact")}
@@ -164,7 +164,7 @@ const ContactSection: React.FC = () => {
               )}
             </form>
           </div>
-        </motion.div>
+        </MotionDiv>
       </div>
     </section>
   )

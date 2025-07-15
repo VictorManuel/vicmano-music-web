@@ -1,7 +1,7 @@
 import { useState, useEffect, FC } from "react"
-import { useLanguage } from "../context/LanguageContext"
-import { motion } from "framer-motion"
+import { useLanguage } from "../../../context/LanguageContext"
 import { Play, X, ChevronLeft, ChevronRight } from "lucide-react"
+import { MotionDiv } from '../../common/Motion/MyMotionComponents'
 
 interface GalleryItem {
   id: number
@@ -135,9 +135,9 @@ const GallerySection: FC = () => {
   }, [selectedItem, currentIndex, filteredItems])
 
   return (
-    <section id="gallery" className="min-h-screen bg-gradient-to-b from-black to-purple-950 snap-section full-section">
-      <div className="container mx-auto px-4 py-20 min-h-screen flex flex-col">
-        <motion.div
+    <section id="gallery" className="min-h-screen snap-section full-section">
+      <div className="container pt-20 md:pt-0 mx-auto px-4 py-20 min-h-screen flex flex-col">
+        <MotionDiv
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -173,7 +173,7 @@ const GallerySection: FC = () => {
             {/* Vista Desktop */}
             <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 h-full">
               {filteredItems.map((item, index) => (
-                <motion.div
+                <MotionDiv
                   key={item.id}
                   initial={{ opacity: 0, scale: 0.9 }}
                   whileInView={{ opacity: 1, scale: 1 }}
@@ -199,7 +199,7 @@ const GallerySection: FC = () => {
                       </div>
                     )}
                   </div>
-                </motion.div>
+                </MotionDiv>
               ))}
             </div>
 
@@ -207,7 +207,7 @@ const GallerySection: FC = () => {
             <div className="md:hidden">
               <div className="flex gap-4 overflow-x-auto pb-4 px-4 -mx-4 scrollbar-hide">
                 {filteredItems.map((item, index) => (
-                  <motion.div
+                  <MotionDiv
                     key={item.id}
                     initial={{ opacity: 0, x: 20 }}
                     whileInView={{ opacity: 1, x: 0 }}
@@ -233,7 +233,7 @@ const GallerySection: FC = () => {
                         </div>
                       )}
                     </div>
-                  </motion.div>
+                  </MotionDiv>
                 ))}
               </div>
 
@@ -251,7 +251,7 @@ const GallerySection: FC = () => {
               </div>
             </div>
           </div>
-        </motion.div>
+        </MotionDiv>
       </div>
 
       {/* Modal con navegación */}
