@@ -1,15 +1,13 @@
-import { useLanguage } from "../context/LanguageContext"
 import { Instagram, Youtube, Mail } from "lucide-react"
 import { FC } from "react"
 
 const Footer: FC = () => {
-  const { language } = useLanguage()
-  const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="bg-black py-12 border-t border-purple-900/30">
-      <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row justify-between items-center mb-8">
+    <footer className="min-h-screen bg-black snap-section full-section border-t border-purple-900/30">
+      
+      <div className="container pt-20 md:pt-0 mx-auto px-4 h-full flex flex-col justify-center">
+        <div className="flex py-6 flex-col md:flex-row justify-between items-center mb-8 border-y border-purple-900/30">
           <div className="flex items-center mb-6 md:mb-0">
             <img src="/images/logo.png" alt="Vicmano" width={60} height={60} className="mr-4" />
             <div>
@@ -44,22 +42,6 @@ const Footer: FC = () => {
             >
               <Mail size={24} />
             </a>
-          </div>
-        </div>
-
-        <div className="border-t border-purple-900/30 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-white/60 text-sm mb-4 md:mb-0">
-            &copy; {currentYear} Vicmano{" "}
-            {language === "en" ? "All rights reserved." : "Todos los derechos reservados."}
-          </p>
-
-          <div className="flex space-x-6 text-sm">
-            <button className="text-white/60 hover:text-white transition-colors">
-              {language === "en" ? "Privacy Policy" : "Política de Privacidad"}
-            </button>
-            <button className="text-white/60 hover:text-white transition-colors">
-              {language === "en" ? "Terms of Service" : "Términos de Servicio"}
-            </button>
           </div>
         </div>
       </div>

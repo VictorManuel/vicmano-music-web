@@ -14,9 +14,9 @@ const ParticleBackground: FC = () => {
     await loadSlim(engine)
   }, [])
 
-  const particlesLoaded = useCallback(async (container: Container) => {
-    // console.log(container)
-  }, [])
+  // const particlesLoaded = useCallback(async (container: Container) => {
+  //   // console.log(container)
+  // }, [])
 
   if (!mounted) return null
 
@@ -25,7 +25,7 @@ const ParticleBackground: FC = () => {
       className="absolute inset-0 z-[-5]"
       id="tsparticles"
       init={particlesInit}
-      loaded={particlesLoaded}
+      // loaded={particlesLoaded}
       options={{
         background: {
           color: {

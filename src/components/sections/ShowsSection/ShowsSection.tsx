@@ -1,5 +1,5 @@
-import { useLanguage } from "../context/LanguageContext"
-import { motion } from "framer-motion"
+import { useLanguage } from "../../../context/LanguageContext"
+import { MotionDiv } from "../../common/Motion/MyMotionComponents"
 import { Calendar, Clock, MapPin } from "lucide-react"
 import { FC } from "react"
 
@@ -37,8 +37,8 @@ const ShowsSection: FC = () => {
 
   return (
     <section id="shows" className="min-h-screen bg-gradient-to-b from-purple-950 to-black snap-section full-section">
-      <div className="container mx-auto px-4 flex items-center justify-center min-h-screen">
-        <motion.div
+      <div className="container pt-20 md:pt-0 mx-auto px-4 flex items-center justify-center min-h-screen">
+        <MotionDiv
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -57,7 +57,7 @@ const ShowsSection: FC = () => {
             {upcomingShows.length > 0 ? (
               <div className="space-y-8">
                 {upcomingShows.map((show) => (
-                  <motion.div
+                  <MotionDiv
                     key={show.id}
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
@@ -94,7 +94,7 @@ const ShowsSection: FC = () => {
                     >
                       Tickets
                     </a>
-                  </motion.div>
+                  </MotionDiv>
                 ))}
               </div>
             ) : (
@@ -103,7 +103,7 @@ const ShowsSection: FC = () => {
               </div>
             )}
           </div>
-        </motion.div>
+        </MotionDiv>
       </div>
     </section>
   )

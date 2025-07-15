@@ -1,5 +1,5 @@
 import { useState, useEffect, FC } from "react"
-import { useLanguage } from "../context/LanguageContext"
+import { useLanguage } from "../../../context/LanguageContext"
 import { Menu, X } from "lucide-react"
 
 interface NavLink {
@@ -43,7 +43,7 @@ const Header: FC = () => {
   if (!mounted) {
     return (
       <header className="fixed top-0 left-0 right-0 z-50 bg-transparent py-4">
-        <div className="container mx-auto px-4 flex justify-between items-center">
+        <div className="container pt-20 md:pt-0 mx-auto px-4 flex justify-between items-center">
           <div className="flex items-center">
             <span className="text-white text-xl font-audiowide">Vicmano</span>
           </div>
@@ -67,7 +67,7 @@ const Header: FC = () => {
         scrolled ? "bg-black/90 backdrop-blur-md py-3 shadow-lg" : "bg-transparent py-6"
       }`}
     >
-      <div className="container mx-auto px-4 flex justify-between items-center">
+      <div className="container pt-20 md:pt-0 mx-auto px-4 flex justify-between items-center">
         <div className="flex items-center cursor-pointer" onClick={() => scrollToSection("hero")}>
           <img src="/images/logo.png" alt="Vicmano" width={50} height={50} className="mr-2" />
           <span className="text-white text-xl font-audiowide">Vicmano</span>

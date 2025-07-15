@@ -1,7 +1,7 @@
-import { useLanguage } from "../context/LanguageContext"
-import { motion } from "framer-motion"
+import { useLanguage } from "../../../context/LanguageContext"
 import { Instagram } from "lucide-react"
 import { FC } from "react"
+import { MotionA, MotionDiv } from '../../common/Motion/MyMotionComponents'
 
 interface InstagramPost {
   id: number
@@ -23,14 +23,14 @@ const InstagramSection: FC = () => {
 
   return (
     <section id="instagram" className="min-h-screen bg-purple-950 snap-section full-section">
-      <div className="container mx-auto px-4 flex items-center justify-center min-h-screen">
-        <motion.div
+      <div className="container pt-20 md:pt-0 mx-auto px-4 flex items-center justify-center min-h-screen">
+        <MotionDiv
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
           className="w-full max-w-6xl"
-        >
+        > 
           <h2 className="text-4xl md:text-6xl font-audiowide font-bold text-center mb-8 text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-fuchsia-500">
             {t("title", "instagram")}
           </h2>
@@ -39,7 +39,7 @@ const InstagramSection: FC = () => {
 
           <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mb-12">
             {instagramPosts.map((post, index) => (
-              <motion.a
+              <MotionA
                 key={post.id}
                 href={post.link}
                 target="_blank"
@@ -58,7 +58,7 @@ const InstagramSection: FC = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-4">
                   <Instagram className="text-white" size={24} />
                 </div>
-              </motion.a>
+              </MotionA>
             ))}
           </div>
 
@@ -73,7 +73,7 @@ const InstagramSection: FC = () => {
               Follow @vicmano.minimal
             </a>
           </div>
-        </motion.div>
+        </MotionDiv>
       </div>
     </section>
   )

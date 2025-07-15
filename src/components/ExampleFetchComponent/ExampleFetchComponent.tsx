@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { useFetch } from '../hooks/useFetch'
+import { useFetch } from '../../hooks/useFetch'
 
 // Ejemplo de uso del hook useFetch con refetch
 const ExampleFetchComponent: FC = () => {
@@ -34,7 +34,7 @@ const ExampleFetchComponent: FC = () => {
         <h3 className="text-lg font-semibold mb-2">Auto-fetch (se ejecuta al cargar)</h3>
         {autoLoading && <p className="text-blue-600">Cargando datos automáticamente...</p>}
         {autoError && <p className="text-red-600">Error: {autoError.message}</p>}
-        {autoData && (
+        {!!autoData && (
           <div>
             <p className="text-green-600">Datos cargados automáticamente:</p>
             <pre className="bg-white p-2 rounded text-sm">{JSON.stringify(autoData, null, 2)}</pre>
@@ -53,7 +53,7 @@ const ExampleFetchComponent: FC = () => {
         <h3 className="text-lg font-semibold mb-2">Fetch Manual (solo con botón)</h3>
         {manualLoading && <p className="text-blue-600">Cargando datos manualmente...</p>}
         {manualError && <p className="text-red-600">Error: {manualError.message}</p>}
-        {manualData && (
+        {!!manualData && (
           <div>
             <p className="text-green-600">Datos cargados manualmente:</p>
             <pre className="bg-white p-2 rounded text-sm">{JSON.stringify(manualData, null, 2)}</pre>

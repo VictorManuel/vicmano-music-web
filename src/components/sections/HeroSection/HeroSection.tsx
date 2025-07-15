@@ -1,8 +1,8 @@
 import { useEffect, useState, useRef, FC } from "react"
-import { useLanguage } from "../context/LanguageContext"
-import ParticleBackground from "./ParticleBackground"
-import { motion } from "framer-motion"
+import { useLanguage } from "../../../context/LanguageContext"
+import ParticleBackground from "../../ParticleBackground/ParticleBackground"
 import { Instagram, Youtube } from "lucide-react"
+import { MotionDiv } from "../../common/Motion/MyMotionComponents"
 
 const HeroSection: FC = () => {
   const { t } = useLanguage()
@@ -67,8 +67,8 @@ const HeroSection: FC = () => {
       <ParticleBackground />
 
       {/* Main content */}
-      <div className="container mx-auto px-4 z-20 relative text-center">
-        <motion.div
+      <div className="container pt-20 md:pt-0 mx-auto px-4 z-20 relative text-center">
+        <MotionDiv
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.2 }}
@@ -84,7 +84,7 @@ const HeroSection: FC = () => {
             {title}
           </h1>
 
-          <motion.p
+          <MotionDiv
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
@@ -94,9 +94,9 @@ const HeroSection: FC = () => {
             }}
           >
             {subtitle}
-          </motion.p>
+          </MotionDiv>
 
-          <motion.div
+          <MotionDiv
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
@@ -120,12 +120,12 @@ const HeroSection: FC = () => {
               <Instagram size={24} />
               {instagramText}
             </a>
-          </motion.div>
-        </motion.div>
+          </MotionDiv>
+        </MotionDiv>
       </div>
 
       {/* Scroll indicator */}
-      <motion.div
+      <MotionDiv
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 1.5 }}
@@ -147,7 +147,7 @@ const HeroSection: FC = () => {
             <path d="M12 5v14M5 12l7 7 7-7" />
           </svg>
         </div>
-      </motion.div>
+      </MotionDiv>
     </section>
   )
 }

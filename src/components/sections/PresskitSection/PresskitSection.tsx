@@ -1,5 +1,5 @@
-import { useLanguage } from "../context/LanguageContext"
-import { motion } from "framer-motion"
+import { useLanguage } from "../../../context/LanguageContext"
+import { MotionDiv } from "../../common/Motion/MyMotionComponents"
 import { Download, FileText, ImageIcon, Music } from "lucide-react"
 import { FC } from "react"
 
@@ -8,8 +8,8 @@ const PresskitSection: FC = () => {
 
   return (
     <section id="presskit" className="min-h-screen bg-black snap-section full-section">
-      <div className="container mx-auto px-4 flex items-center justify-center min-h-screen">
-        <motion.div
+      <div className="container pt-20 md:pt-0 mx-auto px-4 flex items-center justify-center min-h-screen">
+        <MotionDiv
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -23,7 +23,7 @@ const PresskitSection: FC = () => {
           <p className="text-white/80 text-lg text-center max-w-2xl mx-auto mb-16">{t("text", "presskit")}</p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-            <motion.div
+            <MotionDiv
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
@@ -46,9 +46,9 @@ const PresskitSection: FC = () => {
                 <Download size={20} />
                 Download Rider
               </a>
-            </motion.div>
+            </MotionDiv>
 
-            <motion.div
+            <MotionDiv
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
@@ -71,9 +71,9 @@ const PresskitSection: FC = () => {
                 <Download size={20} />
                 Download Photos
               </a>
-            </motion.div>
+            </MotionDiv>
 
-            <motion.div
+            <MotionDiv
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
@@ -96,9 +96,9 @@ const PresskitSection: FC = () => {
                 <Download size={20} />
                 Download Samples
               </a>
-            </motion.div>
+            </MotionDiv>
 
-            <motion.div
+            <MotionDiv
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.4 }}
@@ -121,7 +121,7 @@ const PresskitSection: FC = () => {
                 <Download size={20} />
                 Download Logos
               </a>
-            </motion.div>
+            </MotionDiv>
           </div>
 
           <div className="text-center">
@@ -133,7 +133,7 @@ const PresskitSection: FC = () => {
               {t("button", "presskit")}
             </a>
           </div>
-        </motion.div>
+        </MotionDiv>
       </div>
     </section>
   )
