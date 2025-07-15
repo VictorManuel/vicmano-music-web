@@ -4,6 +4,7 @@ import { Header } from "./components/common"
 import contentData from "./content.json"
 import "./styles/globals.css"
 import { Home } from './pages/home'
+import CustomForm from './components/common/CustomForm/CustomForm';
 
 const App: FC = () => {
   return (
@@ -11,7 +12,7 @@ const App: FC = () => {
       <div className="App">
         <Header />
         <main>
-          <Home />
+          <CustomForm />
         </main>
       </div>
     </LanguageProvider>
