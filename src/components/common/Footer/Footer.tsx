@@ -36,7 +36,7 @@ const Footer: FC = () => {
               <Instagram size={24} />
             </a>
             <a
-              href="mailto:contact@vicmano.com"
+              href="mailto:vicmano.music@gmail.com"
               className="text-white/80 hover:text-fuchsia-400 transition-colors"
               aria-label="Email"
             >
