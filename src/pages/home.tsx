@@ -6,11 +6,11 @@ export const Home: FC = () => {
   return (
     <div>
          <HeroSection />
-          <ShowsSection />
+          {/* <ShowsSection /> */}
           <AboutSection />
-          <GallerySection />
-          <MusicSection />
-          <ContactSection />
+          {/* <GallerySection /> */}
+          {/* <MusicSection /> */}
+          {/* <ContactSection /> */}
           <Footer />
     </div>
   )

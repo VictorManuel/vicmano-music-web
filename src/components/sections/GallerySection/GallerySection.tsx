@@ -6,6 +6,7 @@ import { MotionDiv } from '../../common/Motion/MyMotionComponents'
 interface GalleryItem {
   id: number
   type: "video" | "photo"
+  url?: string
   src: string
   thumbnail?: string
   title: string

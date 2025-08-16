@@ -1,70 +1,64 @@
-# Getting Started with Create React App
+# Vicmano Music Web
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Sitio web oficial de **Vicmano**, DJ especializado en Tech House, Minimal Techno y Hard Techno. Este proyecto sirve como portfolio digital y presskit, permitiendo explorar música, eventos pasados, galería de imágenes, contacto directo e integración con Instagram.
 
-## Available Scripts
+## 🚀 Tecnologías utilizadas
 
-In the project directory, you can run:
+- [React](https://reactjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Vite](https://vitejs.dev/)
+- [TailwindCSS](https://tailwindcss.com/)
+- [Context API](https://reactjs.org/docs/context.html)
 
-### `npm start`
+## 📁 Estructura del proyecto
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```
+├── public/             # Archivos estáticos (imágenes, fuentes)
+├── src/
+│   ├── components/     # Componentes organizados por secciones
+│   ├── context/        # Manejo de estado global e internacionalización
+│   ├── models/         # Interfaces y modelos TypeScript
+│   ├── styles/         # Estilos globales
+│   └── content.json    # Contenido editable (multi idioma)
+├── index.html
+├── package.json
+└── tailwind.config.js
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## ⚙️ Instalación
 
-### `npm test`
+Cloná este repositorio y luego ejecutá:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+npm install
+npm run dev
+```
 
-### `npm run build`
+Esto abrirá el sitio localmente en [http://localhost:5173](http://localhost:5173)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 📦 Scripts disponibles
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- `npm run dev` — Inicia el servidor de desarrollo
+- `npm run build` — Genera una versión optimizada para producción
+- `npm run preview` — Previsualiza la app ya compilada
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 🌐 Soporte multilenguaje
 
-### `npm run eject`
+Este sitio está preparado para mostrar contenido en **español** e **inglés**, gestionado mediante `LanguageContext` y `content.json`.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 📷 Secciones destacadas
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Hero con introducción
+- Música de Vicmano (embed o links)
+- Galería de eventos
+- Presskit
+- Formulario de contacto
+- Feed de Instagram embebido
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 📄 Licencia
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Este proyecto se distribuye bajo una licencia de uso personal. Para colaboración o adaptación, contactá a través del formulario del sitio.
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Desarrollado como portfolio profesional por y para **Vicmano** 🎧

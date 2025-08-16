@@ -12,7 +12,7 @@ const App: FC = () => {
       <div className="App">
         <Header />
         <main>
-          <CustomForm />
+          <Home />
         </main>
       </div>
     </LanguageProvider>

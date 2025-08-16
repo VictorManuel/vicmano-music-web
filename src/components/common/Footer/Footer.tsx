@@ -12,7 +12,7 @@ const Footer: FC = () => {
             <img src="/images/logo.png" alt="Vicmano" width={60} height={60} className="mr-4" />
             <div>
               <h3 className="text-2xl font-audiowide font-bold text-white">Vicmano</h3>
-              <p className="text-white/60">DJ & Electronic Music Producer</p>
+              <p className="text-white/60">Music</p>
             </div>
           </div>
 
