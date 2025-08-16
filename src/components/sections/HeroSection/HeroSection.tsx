@@ -67,7 +67,7 @@ const HeroSection: FC = () => {
       <ParticleBackground />
 
       {/* Main content */}
-      <div className="container pt-20 md:pt-0 mx-auto px-4 z-20 relative text-center">
+      <div className="container pt-20 md:pt-0 mx-auto px-4 py-20 z-20 relative text-center">
         <MotionDiv
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}

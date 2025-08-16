@@ -1,7 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Audiowide:wght@400&display=swap");
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+@import "tailwindcss";
 
 :root {
   --foreground-rgb: 255, 255, 255;

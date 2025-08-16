@@ -12,7 +12,7 @@ const Footer: FC = () => {
             <img src="/images/logo.png" alt="Vicmano" width={60} height={60} className="mr-4" />
             <div>
               <h3 className="text-2xl font-audiowide font-bold text-white">Vicmano</h3>
-              <p className="text-white/60">DJ & Electronic Music Producer</p>
+              <p className="text-white/60">Music</p>
             </div>
           </div>
 
@@ -36,7 +36,7 @@ const Footer: FC = () => {
               <Instagram size={24} />
             </a>
             <a
-              href="mailto:contact@vicmano.com"
+              href="mailto:vicmano.music@gmail.com"
               className="text-white/80 hover:text-fuchsia-400 transition-colors"
               aria-label="Email"
             >
