@@ -26,13 +26,15 @@
 ```
 src/
 ├── components/          # Componentes organizados por funcionalidad
-│   ├── common/         # Componentes reutilizables (Header, Footer, Forms)
+│   ├── common/         # Componentes reutilizables (Header, Footer, Forms, ErrorBoundary)
 │   └── sections/       # Secciones principales de la página
 ├── context/            # Context API para estado global
+├── hooks/              # Hooks personalizados (useFetch, useErrorHandler)
 ├── models/             # Interfaces TypeScript
 ├── pages/              # Páginas principales
 ├── services/           # Servicios y utilidades
 ├── styles/             # Estilos globales
+├── ErrorBoundary.tsx   # ErrorBoundary principal
 └── content.json        # Contenido multiidioma
 ```
 
@@ -65,8 +67,9 @@ src/
 ### Componentes
 - **Composición**: Componentes modulares y reutilizables
 - **Props**: TypeScript interfaces para type safety
-- **Hooks personalizados**: `useLanguage()` para internacionalización
+- **Hooks personalizados**: `useLanguage()` para internacionalización, `useErrorHandler()` para manejo de errores
 - **Motion Components**: Wrappers de Framer Motion para animaciones
+- **ErrorBoundary**: Sistema completo de manejo de errores con UI de fallback
 
 ### Estilos
 - **TailwindCSS**: Utility-first CSS framework
@@ -111,6 +114,38 @@ src/
 - **Lazy loading**: Componentes cargados bajo demanda
 - **Optimización**: Vite para build optimizado
 - **Bundle splitting**: Separación automática de chunks
+
+### Manejo de Errores
+- **ErrorBoundary**: Captura errores de componentes React
+- **ErrorBoundaryWrapper**: Wrapper reutilizable para componentes específicos
+- **Hooks de error**: `useErrorHandler`, `useFormErrorHandler`, `useApiErrorHandler`
+- **UI de fallback**: Interfaz personalizada para errores con diseño consistente
+- **Debugging**: Detalles de error solo en modo desarrollo
+
+#### Sistema de ErrorBoundary
+```tsx
+// ErrorBoundary principal (global)
+<ErrorBoundary>
+  <App />
+</ErrorBoundary>
+
+// ErrorBoundaryWrapper para componentes específicos
+<ErrorBoundaryWrapper componentName="MiComponente">
+  <MiComponente />
+</ErrorBoundaryWrapper>
+
+// Hooks de manejo de errores
+const { handleError, handleAsyncError } = useErrorHandler()
+const { handleFormError } = useFormErrorHandler()
+const { handleApiError } = useApiErrorHandler()
+```
+
+#### Características del ErrorBoundary
+- **Captura de errores**: `componentDidCatch` y `getDerivedStateFromError`
+- **UI de fallback**: Diseño consistente con gradientes púrpura/fucsia
+- **Acciones de recuperación**: Reintento y navegación al inicio
+- **Información de debug**: Stack trace solo en desarrollo
+- **Integración con servicios**: Preparado para Sentry, LogRocket, etc.
 
 ## 🎵 Contenido Específico
 
@@ -161,6 +196,9 @@ npm run preview  # Preview del build
 - ✅ Componentes principales (Hero, About, Footer)
 - ✅ Formulario de contacto (frontend)
 - ✅ Animaciones y efectos visuales
+- ✅ Sistema completo de ErrorBoundary
+- ✅ Hooks personalizados para manejo de errores
+- ✅ ErrorBoundaryWrapper para componentes específicos
 
 ### Pendiente/En Desarrollo
 - 🔄 Integración con backend para formulario
@@ -185,6 +223,9 @@ npm run preview  # Preview del build
 - Mantener consistencia en colores (púrpura/fucsia)
 - Seguir estructura de carpetas establecida
 - Usar TypeScript para type safety
+- Implementar ErrorBoundary para componentes críticos
+- Usar hooks de error para manejo consistente de errores
+- Proporcionar UI de fallback para mejor UX
 
 ### Integraciones Futuras
 - **Email service**: Para formulario de contacto
@@ -192,6 +233,7 @@ npm run preview  # Preview del build
 - **Analytics**: Google Analytics o similar
 - **Social APIs**: Instagram, YouTube
 - **Booking system**: Para gestión de shows
+- **Error monitoring**: Sentry, LogRocket para monitoreo de errores
 
 ## 📞 Contacto para Soporte
 
