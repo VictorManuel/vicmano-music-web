@@ -170,6 +170,46 @@ npm run build    # Build de producción
 npm run preview  # Preview del build
 ```
 
+## 🌐 Despliegue y CI/CD
+
+### GitHub Actions Workflow
+El proyecto incluye un workflow automatizado para despliegue en GitHub Pages:
+
+**Archivo**: `.github/workflows/deploy-pages.yml`
+
+**Características del Workflow**:
+- **Triggers**: Push a `main`/`master` y Pull Requests
+- **Build Environment**: Ubuntu latest con Node.js 18
+- **Cache**: Dependencias npm para builds más rápidos
+- **Artefactos**: Carpeta `./dist` optimizada para producción
+- **Despliegue**: Solo en ramas principales (main/master)
+- **Permisos**: Configuración segura para GitHub Pages
+
+**Jobs del Workflow**:
+1. **Build Job**: Instalación, build y preparación de artefactos
+2. **Deploy Job**: Despliegue automático a GitHub Pages
+
+**Configuración de Permisos**:
+```yaml
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+```
+
+### Estructura de Despliegue
+- **Build Output**: `./dist/` (configurado en Vite)
+- **Artefactos**: Incluye favicons, assets optimizados y HTML
+- **Concurrencia**: Controlada para evitar conflictos de despliegue
+- **URL de Despliegue**: Disponible en environment outputs
+
+### Consideraciones para IA
+- **Automatización**: No requiere intervención manual para despliegue
+- **Optimización**: Build optimizado con Vite para producción
+- **Favicons**: Incluidos automáticamente en el despliegue
+- **Cache**: Dependencias cacheadas para eficiencia
+- **Seguridad**: Permisos mínimos necesarios para GitHub Pages
+
 ## 📋 Convenciones de Código
 
 ### Nomenclatura
@@ -199,6 +239,9 @@ npm run preview  # Preview del build
 - ✅ Sistema completo de ErrorBoundary
 - ✅ Hooks personalizados para manejo de errores
 - ✅ ErrorBoundaryWrapper para componentes específicos
+- ✅ Favicons completos para múltiples plataformas
+- ✅ Workflow de GitHub Actions para despliegue automático
+- ✅ Configuración optimizada para GitHub Pages
 
 ### Pendiente/En Desarrollo
 - 🔄 Integración con backend para formulario

@@ -42,6 +42,30 @@ Esto abrirá el sitio localmente en [http://localhost:5173](http://localhost:517
 - `npm run build` — Genera una versión optimizada para producción
 - `npm run preview` — Previsualiza la app ya compilada
 
+## 🚀 Despliegue Automático
+
+Este proyecto está configurado con **GitHub Actions** para despliegue automático en **GitHub Pages**.
+
+### Workflow de Despliegue
+- **Trigger**: Push a ramas `main` o `master`
+- **Build**: Automático con Node.js 18
+- **Despliegue**: GitHub Pages desde la carpeta `dist/`
+- **URL**: Disponible en la configuración del repositorio
+
+### Configuración del Workflow
+```yaml
+# .github/workflows/deploy-pages.yml
+- Build automático en push a main/master
+- Cache de dependencias para builds rápidos
+- Despliegue optimizado desde ./dist
+- Permisos seguros para GitHub Pages
+```
+
+### Para Activar el Despliegue
+1. **Habilitar GitHub Pages** en Settings > Pages
+2. **Seleccionar fuente**: "GitHub Actions"
+3. **Push a main/master** para activar el primer despliegue
+
 ## 🌐 Soporte multilenguaje
 
 Este sitio está preparado para mostrar contenido en **español** e **inglés**, gestionado mediante `LanguageContext` y `content.json`.
