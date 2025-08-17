@@ -1,5 +1,6 @@
 import { Instagram, Youtube, Mail } from "lucide-react"
 import { FC } from "react"
+import { IMAGES } from "../../../utils/imagePaths"
 
 const Footer: FC = () => {
 
@@ -9,7 +10,7 @@ const Footer: FC = () => {
       <div className="container pt-20 md:pt-0 mx-auto px-4 h-full flex flex-col justify-center">
         <div className="flex py-6 flex-col md:flex-row justify-between items-center mb-8 border-y border-purple-900/30">
           <div className="flex items-center mb-6 md:mb-0">
-            <img src="/images/logo.png" alt="Vicmano" width={60} height={60} className="mr-4" />
+            <img src={IMAGES.logo()} alt="Vicmano" width={60} height={60} className="mr-4" />
             <div>
               <h3 className="text-2xl font-audiowide font-bold text-white">Vicmano</h3>
               <p className="text-white/60">Music</p>

@@ -1,6 +1,7 @@
 import {FC} from 'react';
 import { useLanguage } from "../../../context/LanguageContext"
 import { MotionDiv } from '../../common/Motion/MyMotionComponents'
+import { IMAGES } from "../../../utils/imagePaths"
 
 const AboutSection: FC = () => {
   const { t } = useLanguage()
@@ -19,7 +20,7 @@ const AboutSection: FC = () => {
             <div className="lg:w-1/2 flex justify-center">
               <div className="relative w-80 h-80">
                 <img
-                  src="/images/logo.png"
+                  src={IMAGES.logo()}
                   alt="Vicmano"
                   width={320}
                   height={320}

@@ -1,6 +1,7 @@
 import { useState, useEffect, FC } from "react"
 import { useLanguage } from "../../../context/LanguageContext"
 import { Menu, X } from "lucide-react"
+import { IMAGES } from "../../../utils/imagePaths"
 
 interface NavLink {
   href: string
@@ -69,7 +70,7 @@ const Header: FC = () => {
     >
       <div className="container py-0 mx-auto px-4 flex justify-between items-center">
         <div className="flex items-center cursor-pointer" onClick={() => scrollToSection("hero")}>
-          <img src="/images/logo.png" alt="Vicmano" width={50} height={50} className="mr-2" />
+          <img src={IMAGES.logo()} alt="Vicmano" width={50} height={50} className="mr-2" />
           <span className="text-white text-xl font-audiowide">Vicmano</span>
         </div>
 
