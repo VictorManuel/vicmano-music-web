@@ -3,6 +3,7 @@ import { useLanguage } from "../../../context/LanguageContext"
 import ParticleBackground from "../../ParticleBackground/ParticleBackground"
 import { Instagram, Youtube } from "lucide-react"
 import { MotionDiv } from "../../common/Motion/MyMotionComponents"
+import { IMAGES } from "../../../utils/imagePaths"
 
 const HeroSection: FC = () => {
   const { t } = useLanguage()
@@ -50,7 +51,7 @@ const HeroSection: FC = () => {
           }}
         >
           <img
-            src="/images/performance.png"
+            src={IMAGES.performance()}
             alt="Vicmano Performance"
             className="w-full h-full object-cover object-center"
             style={{
