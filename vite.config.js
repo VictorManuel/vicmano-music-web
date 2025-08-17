@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
-  base: '/vicmano-music-web/',
+  base: '/',
   server: {
     open: true,
   },
