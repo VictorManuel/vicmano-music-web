@@ -3,8 +3,9 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [ main, master ]
-  pull_request:
-    branches: [ main, master ]
+  # Comentamos el trigger de pull_request para evitar deploys innecesarios
+  # pull_request:
+  #   branches: [ main, master ]
 
 permissions:
   contents: read
@@ -13,7 +14,7 @@ permissions:
 
 concurrency:
   group: "pages"
-  cancel-in-progress: false
+  cancel-in-progress: true  # Cambiamos a true para cancelar runs anteriores
 
 jobs:
   build:
@@ -38,7 +39,7 @@ jobs:
         uses: actions/configure-pages@v4
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@3
         with:
           path: './dist'
 
