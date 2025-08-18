@@ -126,7 +126,7 @@ const HeroSection: FC = () => {
       </div>
 
       {/* Scroll indicator */}
-      <MotionDiv
+      {/* <MotionDiv
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 1.5 }}
@@ -148,7 +148,7 @@ const HeroSection: FC = () => {
             <path d="M12 5v14M5 12l7 7 7-7" />
           </svg>
         </div>
-      </MotionDiv>
+      </MotionDiv> */}
     </section>
   )
 }
