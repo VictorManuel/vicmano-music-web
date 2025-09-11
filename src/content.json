@@ -35,8 +35,9 @@
     },
     "contact": {
       "title": "Contacto",
-      "text": "¿Querés contratarme o colaborar? Completá el formulario o escribime directamente a:",
-      "email": "contact@vicmano.com"
+      "text": "¿Querés contratarme o colaborar? Completá el formulario o escribime a:",
+      "email": "vicmano.music@gmail.com",
+      "instagram": "vicmano.music"
     }
   },
   "en": {
@@ -75,8 +76,9 @@
     },
     "contact": {
       "title": "Contact",
-      "text": "Want to book or collaborate? Fill out the form or reach out directly at:",
-      "email": "contact@vicmano.com"
+      "text": "Want to book or collaborate? Fill out the form or reach out at:",
+      "email": "vicmano.music@gmail.com",
+      "instagram": "vicmano.music"
     }
   }
 }

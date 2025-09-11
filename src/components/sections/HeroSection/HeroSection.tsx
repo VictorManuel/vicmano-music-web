@@ -55,7 +55,7 @@ const HeroSection: FC = () => {
             alt="Vicmano Performance"
             className="w-full h-full object-cover object-center"
             style={{
-              filter: "brightness(0.6) contrast(1.1)",
+              filter: "brightness(0.6) contrast(1.1) blur(2px)",
             }}
           />
         </div>
@@ -78,7 +78,7 @@ const HeroSection: FC = () => {
           <h1
             className="text-6xl md:text-8xl lg:text-9xl font-audiowide font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-600 to-fuchsia-500"
             style={{
-              textShadow: "0 0 30px rgba(156, 39, 176, 0.8), 0 0 60px rgba(233, 30, 99, 0.6)",
+              // textShadow: "0 0 30px rgba(156, 39, 176, 0.8), 0 0 60px rgba(233, 30, 99, 0.6)",
               WebkitTextStroke: "1px rgba(255, 255, 255, 0.1)",
             }}
           >
