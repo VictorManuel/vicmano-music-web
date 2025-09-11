@@ -53,9 +53,8 @@ export const sendContactEmailJS = async (formData: ContactFormData): Promise<Con
 // Función principal para enviar formulario de contacto usando Google Apps Script (COMPLETAMENTE GRATUITO)
 export const sendContactForm = async (formData: ContactFormData): Promise<ContactResponse> => {
   try {
-    // Reemplaza 'YOUR_GOOGLE_APPS_SCRIPT_URL' con la URL de tu Google Apps Script
     // Para obtenerlo: 1. Ve a script.google.com, 2. Crea un nuevo proyecto, 3. Publica como web app
-    const response = await fetch('YOUR_GOOGLE_APPS_SCRIPT_URL', {
+    const response = await fetch('https://script.google.com/macros/s/AKfycbzmo4c9YejxS5BVlADEHW8IFlUgbd5jGU8ANR9_b4PlIHHAri07lb1UKNd9qEu9ZXtuzQ/exec', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
