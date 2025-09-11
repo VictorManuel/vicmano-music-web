@@ -17,11 +17,11 @@ export const Home: FC = () => {
       
       {/* <GallerySection /> */}
       {/* <MusicSection /> */}
-      {/* <ContactSection /> */}
+      <ContactSection />
       
-      <ErrorBoundaryWrapper componentName="Footer">
+      {/* <ErrorBoundaryWrapper componentName="Footer">
         <Footer />
-      </ErrorBoundaryWrapper>
+      </ErrorBoundaryWrapper> */}
     </div>
   )
 }

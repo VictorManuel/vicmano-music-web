@@ -1,13 +1,11 @@
 import { FC, useState, type ChangeEvent, type FormEvent } from "react"
 import { useLanguage } from "../../../context/LanguageContext"
-import { Mail, Send } from "lucide-react"
+import { Mail, Send, Instagram } from "lucide-react"
 import { MotionDiv } from '../../common/Motion/MyMotionComponents'
+import { sendContactForm, type ContactFormData } from "../../../services/contact.service"
+import Footer from "../../common/Footer/Footer"
 
-interface FormState {
-  name: string
-  email: string
-  message: string
-}
+interface FormState extends ContactFormData {}
 
 const ContactSection: FC = () => {
   const { t, language } = useLanguage()
@@ -30,22 +28,33 @@ const ContactSection: FC = () => {
     e.preventDefault()
     setIsSubmitting(true)
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500))
-
-    setIsSubmitting(false)
-    setSubmitSuccess(true)
-    setFormState({ name: "", email: "", message: "" })
-
-    // Reset success message after 5 seconds
-    setTimeout(() => {
-      setSubmitSuccess(false)
-    }, 5000)
+    try {
+      const response = await sendContactForm(formState)
+      
+      if (response.success) {
+        setSubmitSuccess(true)
+        setFormState({ name: "", email: "", message: "" })
+      } else {
+        // Manejar error
+        console.error('Error al enviar:', response.message)
+        alert(language === "en" ? "Error sending message. Please try again." : "Error al enviar el mensaje. Por favor, inténtalo de nuevo.")
+      }
+    } catch (error) {
+      console.error('Error:', error)
+      alert(language === "en" ? "Error sending message. Please try again." : "Error al enviar el mensaje. Por favor, inténtalo de nuevo.")
+    } finally {
+      setIsSubmitting(false)
+      
+      // Reset success message after 5 seconds
+      setTimeout(() => {
+        setSubmitSuccess(false)
+      }, 5000)
+    }
   }
 
   return (
     <section id="contact" className="min-h-screen bg-gradient-to-b from-black to-purple-950 snap-section full-section">
-      <div className="container pt-20 md:pt-0 mx-auto px-4 flex items-center justify-center min-h-screen">
+      <div className="container py-20 mx-auto px-4 flex items-center justify-center min-h-screen">
         <MotionDiv
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -59,7 +68,7 @@ const ContactSection: FC = () => {
 
           <p className="text-white/80 text-lg text-center max-w-2xl mx-auto mb-6">{t("text", "contact")}</p>
 
-          <div className="flex justify-center items-center mb-12">
+          <div className="flex flex-col md:flex-row justify-center items-center gap-6 mb-12">
             <a
               href={`mailto:${t("email", "contact")}`}
               className="inline-flex items-center gap-2 text-fuchsia-400 hover:text-fuchsia-300 transition-colors text-lg"
@@ -67,9 +76,18 @@ const ContactSection: FC = () => {
               <Mail size={24} />
               {t("email", "contact")}
             </a>
+            <a
+              href={`https://instagram.com/${t("instagram", "contact")}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-fuchsia-400 hover:text-fuchsia-300 transition-colors text-lg"
+            >
+              <Instagram size={24} />
+              @{t("instagram", "contact")}
+            </a>
           </div>
 
-          <div className="bg-purple-900/30 backdrop-blur-sm border border-purple-500/20 rounded-lg p-8 md:p-10">
+          <div className="bg-gradient-to-t from-black to-purple-950 backdrop-blur-sm border border-purple-500/20 rounded-lg p-8 md:p-10">
             <form onSubmit={handleSubmit} className="space-y-8">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div>
@@ -164,6 +182,7 @@ const ContactSection: FC = () => {
               )}
             </form>
           </div>
+          {/* <Footer /> */}
         </MotionDiv>
       </div>
     </section>

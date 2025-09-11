@@ -5,10 +5,10 @@ import { IMAGES } from "../../../utils/imagePaths"
 const Footer: FC = () => {
 
   return (
-    <footer className="min-h-screen bg-black snap-section full-section border-t border-purple-900/30">
+    <footer className="min-h-screen bg-gradient-to-t from-black to-purple-950 snap-section full-section ">
       
-      <div className="container pt-20 md:pt-0 mx-auto px-4 h-full flex flex-col justify-center">
-        <div className="flex py-6 flex-col md:flex-row justify-between items-center mb-8 border-y border-purple-900/30">
+      <div className="container py-20 h-full flex flex-col justify-center">
+        <div className="flex py-6 flex-col md:flex-row justify-between items-center border-y border-purple-900/30">
           <div className="flex items-center mb-6 md:mb-0">
             <img src={IMAGES.logo()} alt="Vicmano" width={60} height={60} className="mr-4" />
             <div>

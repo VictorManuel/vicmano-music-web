@@ -16,8 +16,8 @@ const AboutSection: FC = () => {
   }, [])
 
   return (
-    <section id="about" className="min-h-screen bg-black py-7 snap-section full-section">
-      <div className="container mx-auto pt-20 md:pt-0 px-4 py-20 flex items-center justify-center min-h-screen">
+    <section id="about" className="min-h-screen bg-black snap-section full-section">
+      <div className="container mx-auto py-20 px-4  flex items-center justify-center min-h-screen">
         <MotionDiv
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
