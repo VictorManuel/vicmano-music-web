@@ -1,7 +1,8 @@
 import { useState, useEffect, FC } from "react"
 import { useLanguage } from "../../../context/LanguageContext"
-import { Menu, X } from "lucide-react"
+import { Menu, X, Link as LinkIcon } from "lucide-react"
 import { IMAGES } from "../../../utils/imagePaths"
+import { Link } from "react-router-dom"
 
 interface NavLink {
   href: string
@@ -85,6 +86,13 @@ const Header: FC = () => {
               {link.label}
             </button>
           ))}
+          <Link
+            to="/links"
+            className="flex items-center space-x-2 text-white/90 hover:text-fuchsia-400 transition-colors font-audiowide text-sm tracking-wide"
+          >
+            <LinkIcon size={16} />
+            <span>Links</span>
+          </Link>
           <button
             onClick={toggleLanguage}
             className="ml-4 px-4 py-2 border border-fuchsia-500/70 rounded-md text-white/90 hover:bg-fuchsia-500/20 hover:border-fuchsia-400 transition-all font-audiowide text-sm"
@@ -115,6 +123,14 @@ const Header: FC = () => {
               {link.label}
             </button>
           ))}
+          <Link
+            to="/links"
+            className="flex items-center space-x-2 text-white/90 hover:text-fuchsia-400 transition-colors font-audiowide text-left"
+            onClick={() => setIsMenuOpen(false)}
+          >
+            <LinkIcon size={16} />
+            <span>Links</span>
+          </Link>
           <button
             onClick={toggleLanguage}
             className="self-start px-4 py-2 border border-fuchsia-500/70 rounded-md text-white/90 hover:bg-fuchsia-500/20 transition-colors font-audiowide text-sm"
