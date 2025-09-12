@@ -205,21 +205,23 @@ export const sendContactGoogleAppsScript = async (formData: ContactFormData): Pr
     // Necesitas crear un Google Apps Script y publicarlo como web app
     const response = await fetch('https://script.google.com/macros/s/AKfycbzmo4c9YejxS5BVlADEHW8IFlUgbd5jGU8ANR9_b4PlIHHAri07lb1UKNd9qEu9ZXtuzQ/exec', {
       method: 'POST',
+      redirect: "follow",
+      mode: 'cors',
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'text/plain',
       },
       body: JSON.stringify(formData),
     })
 
-    const data = await response.json()
+    const data = await response.text()
 
-    if (data.success) {
+    if (data.includes('success')) {
       return {
         success: true,
         message: 'Mensaje enviado con éxito'
       }
     } else {
-      throw new Error(data.message || 'Error al enviar')
+      throw new Error(data)
     }
   } catch (error) {
     return {
