@@ -56,8 +56,10 @@ export const sendContactForm = async (formData: ContactFormData): Promise<Contac
     // Para obtenerlo: 1. Ve a script.google.com, 2. Crea un nuevo proyecto, 3. Publica como web app
     const response = await fetch('https://script.google.com/macros/s/AKfycbzmo4c9YejxS5BVlADEHW8IFlUgbd5jGU8ANR9_b4PlIHHAri07lb1UKNd9qEu9ZXtuzQ/exec', {
       method: 'POST',
+      mode: 'cors', // Especificar modo CORS
       headers: {
         'Content-Type': 'application/json',
+        'Accept': 'application/json',
       },
       body: JSON.stringify({
         name: formData.name,
@@ -66,6 +68,11 @@ export const sendContactForm = async (formData: ContactFormData): Promise<Contac
         timestamp: new Date().toISOString()
       }),
     })
+
+    // Verificar si la respuesta es ok
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`)
+    }
 
     const data = await response.json()
 
@@ -79,6 +86,15 @@ export const sendContactForm = async (formData: ContactFormData): Promise<Contac
     }
   } catch (error) {
     console.error('Error enviando formulario:', error)
+    
+    // Manejar errores específicos de CORS
+    if (error instanceof TypeError && error.message.includes('CORS')) {
+      return {
+        success: false,
+        message: 'Error de configuración. Por favor, verifica que el script esté configurado correctamente.'
+      }
+    }
+    
     return {
       success: false,
       message: 'Error al enviar el mensaje. Por favor, inténtalo de nuevo.'

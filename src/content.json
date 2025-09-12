@@ -38,6 +38,32 @@
       "text": "¿Querés contratarme o colaborar? Completá el formulario o escribime a:",
       "email": "vicmano.music@gmail.com",
       "instagram": "vicmano.music"
+    },
+    "linktree": {
+      "title": "Vicmano",
+      "subtitle": "Conectá conmigo",
+      "links": {
+        "tickets": {
+          "title": "Entradas Amazonia - Kook\n20 de septiembre",
+          "url": "https://wearebombo.app.link/EMBbzhYFyWb",
+          "icon": "ticket"
+        },
+        "instagram": {
+          "title": "Instagram",
+          "url": "https://instagram.com/vicmano.music",
+          "icon": "instagram"
+        },
+        "youtube": {
+          "title": "YouTube",
+          "url": "https://youtube.com/@vicmano",
+          "icon": "youtube"
+        },
+        "email": {
+          "title": "Email",
+          "url": "mailto:vicmano.music@gmail.com",
+          "icon": "mail"
+        }
+      }
     }
   },
   "en": {
@@ -79,6 +105,32 @@
       "text": "Want to book or collaborate? Fill out the form or reach out at:",
       "email": "vicmano.music@gmail.com",
       "instagram": "vicmano.music"
+    },
+    "linktree": {
+      "title": "Vicmano",
+      "subtitle": "Connect with me",
+      "links": {
+        "instagram": {
+          "title": "Instagram",
+          "url": "https://instagram.com/vicmano.music",
+          "icon": "instagram"
+        },
+        "youtube": {
+          "title": "YouTube",
+          "url": "https://youtube.com/@vicmano",
+          "icon": "youtube"
+        },
+        "email": {
+          "title": "Email",
+          "url": "mailto:vicmano.music@gmail.com",
+          "icon": "mail"
+        },
+        "tickets": {
+          "title": "Buy Tickets",
+          "url": "#",
+          "icon": "ticket"
+        }
+      }
     }
   }
 }
