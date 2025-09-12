@@ -2,8 +2,8 @@ import { FC, useState, type ChangeEvent, type FormEvent } from "react"
 import { useLanguage } from "../../../context/LanguageContext"
 import { Mail, Send, Instagram } from "lucide-react"
 import { MotionDiv } from '../../common/Motion/MyMotionComponents'
-import { sendContactForm, type ContactFormData } from "../../../services/contact.service"
-import Footer from "../../common/Footer/Footer"
+import { sendContactGoogleAppsScript, type ContactFormData } from "../../../services/contact.service"
+// import Footer from "../../common/Footer/Footer"
 
 interface FormState extends ContactFormData {}
 
@@ -29,7 +29,7 @@ const ContactSection: FC = () => {
     setIsSubmitting(true)
 
     try {
-      const response = await sendContactForm(formState)
+      const response = await sendContactGoogleAppsScript(formState)
       
       if (response.success) {
         setSubmitSuccess(true)
