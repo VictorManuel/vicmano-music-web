@@ -2,7 +2,7 @@ import { FC, useState, type ChangeEvent, type FormEvent } from "react"
 import { useLanguage } from "../../../context/LanguageContext"
 import { Mail, Send, Instagram } from "lucide-react"
 import { MotionDiv } from '../../common/Motion/MyMotionComponents'
-import { sendContactGoogleAppsScript, type ContactFormData } from "../../../services/contact.service"
+import { sendContactFormspree, type ContactFormData } from "../../../services/contact.service"
 // import Footer from "../../common/Footer/Footer"
 
 interface FormState extends ContactFormData {}
@@ -29,7 +29,7 @@ const ContactSection: FC = () => {
     setIsSubmitting(true)
 
     try {
-      const response = await sendContactGoogleAppsScript(formState)
+      const response = await sendContactFormspree(formState)
       
       if (response.success) {
         setSubmitSuccess(true)
@@ -87,6 +87,8 @@ const ContactSection: FC = () => {
             </a>
           </div>
 
+          {/* Formulario temporalmente oculto */}
+          {/* 
           <div className="bg-gradient-to-t from-black to-purple-950 backdrop-blur-sm border border-purple-500/20 rounded-lg p-8 md:p-10">
             <form onSubmit={handleSubmit} className="space-y-8">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -182,6 +184,7 @@ const ContactSection: FC = () => {
               )}
             </form>
           </div>
+          */}
           {/* <Footer /> */}
         </MotionDiv>
       </div>

@@ -8,6 +8,49 @@ export interface ContactResponse {
   message: string
 }
 
+// Configuración de Formspree - Reemplaza con tu endpoint de Formspree
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID_HERE';
+
+export const sendContactFormspree = async (
+  formData: ContactFormData
+): Promise<ContactResponse> => {
+  // timeout opcional para UX
+  const ac = new AbortController();
+  const t = setTimeout(() => ac.abort(), 15000);
+
+  try {
+    // Formspree espera FormData en lugar de JSON
+    const formDataToSend = new FormData();
+    formDataToSend.append('name', formData.name);
+    formDataToSend.append('email', formData.email);
+    formDataToSend.append('message', formData.message);
+
+    const res = await fetch(FORMSPREE_ENDPOINT, {
+      method: 'POST',
+      body: formDataToSend,
+      signal: ac.signal,
+    });
+
+    clearTimeout(t);
+
+    // Formspree devuelve 200 si el envío es exitoso
+    if (res.ok) {
+      return { success: true, message: 'Mensaje enviado con éxito' };
+    }
+
+    // Si hay error, intentar obtener el mensaje de error
+    const errorText = await res.text().catch(() => '');
+    return {
+      success: false,
+      message: `Error al enviar el mensaje: ${res.status} ${errorText}`,
+    };
+  } catch (err) {
+    clearTimeout(t);
+    return { success: false, message: 'Error al enviar el mensaje' };
+  }
+};
+
+// Mantener el servicio anterior por compatibilidad (opcional)
 export const sendContactGoogleAppsScript = async (
   formData: ContactFormData
 ): Promise<ContactResponse> => {

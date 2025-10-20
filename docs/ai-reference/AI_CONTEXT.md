@@ -158,7 +158,7 @@ const { handleApiError } = useApiErrorHandler()
 - **Filosofía**: Crear viajes emocionales desde contemplación hasta baile explosivo
 
 ### Contacto
-- **Email**: contact@vicmano.com
+- **Email**: vicmano.music@gmail.com
 - **Redes**: YouTube, Instagram
 - **Propósito**: Contrataciones y colaboraciones
 
@@ -281,7 +281,7 @@ permissions:
 ## 📞 Contacto para Soporte
 
 Para consultas técnicas o colaboración:
-- **Email**: contact@vicmano.com
+- **Email**: vicmano.music@gmail.com
 - **Proyecto**: Portfolio personal de Vicmano
 - **Licencia**: Uso personal (contactar para colaboración)
 

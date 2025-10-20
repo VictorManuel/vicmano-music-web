@@ -2,6 +2,7 @@ import { FC } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { Instagram, Youtube, Mail, Ticket, ExternalLink, ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import logoImage from '/images/logo.png';
 
 interface LinkItem {
   title: string;
@@ -16,7 +17,7 @@ interface LinktreeContent {
     instagram: LinkItem;
     youtube: LinkItem;
     email: LinkItem;
-    tickets: LinkItem;
+    tickets?: LinkItem;
   };
 }
 
@@ -40,7 +41,7 @@ const LinktreePage: FC = () => {
   };
 
   const getLinkStyles = (key: string, isHighlighted: boolean = false) => {
-    const baseStyles = "w-full backdrop-blur-lg border rounded-2xl p-5 flex items-center justify-between hover:scale-[1.02] transition-all duration-300 group shadow-lg hover:shadow-xl";
+    const baseStyles = "w-full backdrop-blur-lg border rounded-2xl p-5 flex items-center justify-between cursor-pointer hover:scale-[1.02] transition-all duration-300 group shadow-lg hover:shadow-xl";
     
     const colorStyles = {
       instagram: "bg-gradient-to-r from-pink-500/20 to-purple-500/20 border-pink-400/30 hover:bg-gradient-to-r hover:from-pink-500/30 hover:to-purple-500/30 hover:shadow-pink-500/20",
@@ -65,11 +66,11 @@ const LinktreePage: FC = () => {
     title: "Vicmano",
     subtitle: "Conectá conmigo",
     links: {
-      tickets: {
-        title: "Entradas Amazonia - Kook\n20 de septiembre",
-        url: "#",
-        icon: "ticket"
-      },
+      // tickets: {
+      //   title: "Entradas Amazonia - Kook\n20 de septiembre",
+      //   url: "#",
+      //   icon: "ticket"
+      // },
       instagram: {
         title: "Instagram",
         url: "https://instagram.com/vicmano.minimal",
@@ -105,15 +106,18 @@ const LinktreePage: FC = () => {
             className="inline-flex items-center space-x-2 text-white/80 hover:text-white transition-colors duration-300 group"
           >
             <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform duration-300" />
-            <span className="font-medium">Volver al sitio</span>
+            <span className="font-medium">Website</span>
           </Link>
         </div>
 
         {/* Profile Section */}
         <div className="text-center mb-10">
-          <div className="w-28 h-28 mx-auto mb-6 rounded-full bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 flex items-center justify-center shadow-2xl shadow-purple-500/25 relative">
-            <span className="text-3xl font-bold text-white">V</span>
-            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 animate-pulse opacity-75"></div>
+          <div className="w-28 h-28 mx-auto mb-6 rounded-full bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 flex items-center justify-center shadow-2xl shadow-purple-500/25 relative overflow-hidden">
+            <img 
+              src={logoImage} 
+              alt="Vicmano Logo" 
+              className="w-full h-full mt-2.5 object-contain"
+            />
           </div>
           <h1 className="text-4xl font-bold mb-3 bg-gradient-to-r from-purple-200 to-pink-200 bg-clip-text text-transparent">
             {finalContent.title}
