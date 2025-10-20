@@ -35,7 +35,7 @@
     },
     "contact": {
       "title": "Contacto",
-      "text": "¿Querés contratarme o colaborar? Completá el formulario o escribime a:",
+      "text": "¿Querés contratarme o colaborar? Escribime a:",
       "email": "vicmano.music@gmail.com",
       "instagram": "vicmano.music"
     },
@@ -43,19 +43,14 @@
       "title": "Vicmano",
       "subtitle": "Conectá conmigo",
       "links": {
-        "tickets": {
-          "title": "Entradas Amazonia - Kook\n20 de septiembre",
-          "url": "https://wearebombo.app.link/EMBbzhYFyWb",
-          "icon": "ticket"
-        },
         "instagram": {
           "title": "Instagram",
-          "url": "https://instagram.com/vicmano.music",
+          "url": "https://instagram.com/vicmano.minimal",
           "icon": "instagram"
         },
         "youtube": {
           "title": "YouTube",
-          "url": "https://youtube.com/@vicmano",
+          "url": "https://youtube.com/@vicmanomusic",
           "icon": "youtube"
         },
         "email": {
@@ -102,7 +97,7 @@
     },
     "contact": {
       "title": "Contact",
-      "text": "Want to book or collaborate? Fill out the form or reach out at:",
+      "text": "Want to book or collaborate? Reach out at:",
       "email": "vicmano.music@gmail.com",
       "instagram": "vicmano.music"
     },
@@ -112,23 +107,18 @@
       "links": {
         "instagram": {
           "title": "Instagram",
-          "url": "https://instagram.com/vicmano.music",
+          "url": "https://instagram.com/vicmano.minimal",
           "icon": "instagram"
         },
         "youtube": {
           "title": "YouTube",
-          "url": "https://youtube.com/@vicmano",
+          "url": "https://youtube.com/@vicmanomusic",
           "icon": "youtube"
         },
         "email": {
           "title": "Email",
           "url": "mailto:vicmano.music@gmail.com",
           "icon": "mail"
-        },
-        "tickets": {
-          "title": "Buy Tickets",
-          "url": "#",
-          "icon": "ticket"
         }
       }
     }
