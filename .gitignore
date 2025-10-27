@@ -99,6 +99,7 @@ dist
 public
 !public/favicon/
 !public/images/
+!public/images/*
 
 # Storybook build outputs
 .out
