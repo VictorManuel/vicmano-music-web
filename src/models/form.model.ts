@@ -1,5 +1,9 @@
+// Este archivo se mantiene por compatibilidad hacia atrás
+// Los nuevos schemas están en src/forms/contact-form.model.ts
+
 import { z } from "zod"
 
+// Schema genérico para formularios de registro (mantenido por compatibilidad)
 export const schema = z.object({
     name: z.string("requiere nombre").min(1, "es requerido" ),
     email: z.string("requiere correo").email("correo invalido").min(1, "es requerido" ),
@@ -11,3 +15,11 @@ export const schema = z.object({
 })
 
 export type FormValues = z.infer<typeof schema>
+
+// Re-exportar desde forms para facilitar migración
+export { 
+  contactFormSchema, 
+  registrationFormSchema,
+  type ContactFormValues,
+  type RegistrationFormValues 
+} from '../forms/contact-form.model'
