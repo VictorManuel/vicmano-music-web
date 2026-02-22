@@ -9,6 +9,10 @@ Sitio web oficial de **Vicmano**, DJ especializado en Tech House, Minimal Techno
 - [Vite](https://vitejs.dev/)
 - [TailwindCSS](https://tailwindcss.com/)
 - [Context API](https://reactjs.org/docs/context.html)
+- [React Router](https://reactrouter.com/)
+- [React Particles](https://particles.js.org/) (Efectos visuales)
+- [Framer Motion](https://www.framer.com/motion/) (Animaciones)
+- [Lucide React](https://lucide.dev/) (Iconos)
 
 ## 📁 Estructura del proyecto
 
@@ -41,6 +45,7 @@ Esto abrirá el sitio localmente en [http://localhost:5173](http://localhost:517
 - `npm run dev` — Inicia el servidor de desarrollo
 - `npm run build` — Genera una versión optimizada para producción
 - `npm run preview` — Previsualiza la app ya compilada
+- `npm run lint` — Ejecuta el linter (pendiente de configuración)
 
 ## 🚀 Despliegue Automático
 
@@ -72,12 +77,13 @@ Este sitio está preparado para mostrar contenido en **español** e **inglés**,
 
 ## 📷 Secciones destacadas
 
-- Hero con introducción
+- Hero con introducción y efectos de partículas
 - Música de Vicmano (embed o links)
 - Galería de eventos
-- Presskit
+- Presskit descargable
 - Formulario de contacto
 - Feed de Instagram embebido
+- **Linktree / Bio Page**: Página optimizada para compartir enlaces en redes sociales (`/links`)
 
 ## 📄 Licencia
 

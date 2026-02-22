@@ -1,10 +1,7 @@
-import InstagramSection from "./InstagramSection/InstagramSection"
-import ShowsSection from "./ShowsSection/ShowsSection"
-import AboutSection from "./AboutSection/AboutSection"
-import ContactSection from "./ContactSection/ContactSection"
-import GallerySection from "./GallerySection/GallerySection"
-import HeroSection from "./HeroSection/HeroSection"
-import PresskitSection from "./PresskitSection/PresskitSection"
-import MusicSection from "./MusicSection/MusicSection"
-
-export { InstagramSection, ShowsSection, AboutSection, ContactSection, GallerySection, HeroSection, PresskitSection, MusicSection }
+export { default as HeroSection } from "./HeroSection/HeroSection";
+// export { default as AboutSection } from "./AboutSection/AboutSection";
+export { default as AboutSection } from "./AboutSection/AboutSection";
+export { default as ContactSection } from "./ContactSection/ContactSection";
+export { default as MediaSection } from "./MediaSection/MediaSection";
+// export { default as ShowsSection } from "./ShowsSection/ShowsSection";
+// export { default as MusicSection } from "./MusicSection/MusicSection";

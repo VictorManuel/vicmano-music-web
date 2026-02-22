@@ -5,6 +5,7 @@ interface GlobalContextType {
     setValue: React.Dispatch<React.SetStateAction<number>>
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const GlobalContext = createContext<GlobalContextType>({
     value: null,
     setValue: () => { }
@@ -24,6 +25,7 @@ export const GlobalProvider = ({ children }: GlobalContextProps) => {
     return <GlobalContext.Provider value={{ value, setValue }}>{children}</GlobalContext.Provider>
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useGlobalContext = () => {
     const context = useContext(GlobalContext)
     if (!context.value || context.value === EmptyGlobalState) {

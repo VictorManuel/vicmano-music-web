@@ -23,6 +23,10 @@
       "title": "Instagram",
       "text": "Seguime en Instagram para ver detrás de escena, flyers y la energía de cada evento."
     },
+    "videos": {
+      "title": "Videos",
+      "text": "Reviví los mejores momentos y sets en vivo."
+    },
     "shows": {
       "title": "Agenda",
       "upcoming": "Próximos shows:",
@@ -57,8 +61,16 @@
           "title": "Email",
           "url": "mailto:vicmano.music@gmail.com",
           "icon": "mail"
+        },
+        "website": {
+          "title": "VICMANO.COM",
+          "url": "https://vicmano.com",
+          "icon": "globe"
         }
       }
+    },
+    "media": {
+      "title": "Multimedia"
     }
   },
   "en": {
@@ -84,6 +96,10 @@
     "instagram": {
       "title": "Instagram",
       "text": "Follow me on Instagram for behind-the-scenes, flyers, and raw event energy."
+    },
+    "videos": {
+      "title": "Videos",
+      "text": "Relive the best moments and live sets."
     },
     "shows": {
       "title": "Shows",
@@ -119,8 +135,16 @@
           "title": "Email",
           "url": "mailto:vicmano.music@gmail.com",
           "icon": "mail"
+        },
+        "website": {
+          "title": "VICMANO.COM",
+          "url": "https://vicmano.com",
+          "icon": "globe"
         }
       }
+    },
+    "media": {
+      "title": "Multimedia"
     }
   }
 }

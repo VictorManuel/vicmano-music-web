@@ -16,6 +16,7 @@ const Header: FC = () => {
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true)
 
     const handleScroll = () => {
@@ -56,6 +57,7 @@ const Header: FC = () => {
 
   const navLinks: NavLink[] = [
     { href: "about", label: t("title", "about") },
+    { href: "media", label: t("title", "media") },
     // { href: "gallery", label: t("title", "gallery") },
     // { href: "instagram", label: t("title", "instagram") },
     // { href: "shows", label: t("title", "shows") },
@@ -65,9 +67,8 @@ const Header: FC = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ${
-        scrolled ? "bg-black/90 backdrop-blur-md shadow-lg" : "bg-transparent py-6"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ${scrolled ? "bg-black/90 backdrop-blur-md shadow-lg" : "bg-transparent py-6"
+        }`}
     >
       <div className="container py-0 mx-auto px-4 flex justify-between items-center">
         <div className="flex items-center cursor-pointer" onClick={() => scrollToSection("hero")}>
