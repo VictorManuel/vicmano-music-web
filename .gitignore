@@ -96,7 +96,7 @@ dist
 
 # Gatsby files
 .cache/
-public
+public/*
 !public/favicon/
 !public/images/
 !public/images/*

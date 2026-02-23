@@ -25,13 +25,13 @@ interface VideoItem {
 const galleryItems: GalleryItem[] = [
     {
         id: 1,
-        src: "/images/gallery/logo-texto.png",
+        src: "/images/logo-texto.png",
         title: "Img Logo",
         category: "Logo"
     },
     {
         id: 2,
-        src: "/images/gallery/logo.png",
+        src: "/images/logo.png",
         title: "Studio Vibes",
         category: "Logo"
     },
