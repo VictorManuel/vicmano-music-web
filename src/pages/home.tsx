@@ -1,5 +1,5 @@
 import { FC } from "react"
-import { HeroSection, AboutSection, MediaSection, ContactSection } from "../components/sections"
+import { HeroSection, AboutSection, MediaSection, ReelsSection, ContactSection } from "../components/sections"
 import { ErrorBoundaryWrapper } from "../components/common"
 
 import { Helmet } from 'react-helmet-async';
@@ -22,6 +22,7 @@ export const Home: FC = () => {
       </ErrorBoundaryWrapper>
 
       <MediaSection />
+      <ReelsSection />
       {/* <MusicSection /> */}
       <ContactSection />
 
