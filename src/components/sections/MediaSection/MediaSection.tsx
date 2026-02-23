@@ -37,103 +37,103 @@ const galleryItems: GalleryItem[] = [
     },
     {
         id: 3,
-        src: "/images/Foto-5.png",
+        src: "/images/gallery/Foto-5.png",
         title: "Studio Vibes",
         category: "Studio"
     },
     {
         id: 4,
-        src: "/images/Foto-2.png",
+        src: "/images/gallery/Foto-2.png",
         title: "Studio Vibes",
         category: "Studio"
     },
     {
         id: 5,
-        src: "/images/Foto.png",
+        src: "/images/gallery/Foto.png",
         title: "Img Logo",
         category: "Logo"
     },
     {
         id: 6,
-        src: "/images/Foto-15.png",
+        src: "/images/gallery/Foto-15.png",
         title: "Text Logo",
         category: "Logo"
     },
     {
         id: 7,
-        src: "/images/Foto-8.png",
+        src: "/images/gallery/Foto-8.png",
         title: "Studio VIbes",
         category: "Other"
     },
     {
         id: 8,
-        src: "/images/Foto-4.png",
+        src: "/images/gallery/Foto-4.png",
         title: "Studio VIbes",
         category: "Other"
     },
     {
         id: 9,
-        src: "/images/Foto-7.png",
+        src: "/images/gallery/Foto-7.png",
         title: "Studio VIbes",
         category: "Other"
     },
     {
         id: 10,
-        src: "/images/Foto-3.png",
+        src: "/images/gallery/Foto-3.png",
         title: "Studio VIbes",
         category: "Other"
     },
     {
         id: 11,
-        src: "/images/Foto-9.png",
+        src: "/images/gallery/Foto-9.png",
         title: "Studio VIbes",
         category: "Other"
     },
     {
         id: 12,
-        src: "/images/Foto-10.png",
+        src: "/images/gallery/Foto-10.png",
         title: "Studio VIbes",
         category: "Other"
     },
     {
         id: 13,
-        src: "/images/Foto-11.png",
+        src: "/images/gallery/Foto-11.png",
         title: "Studio VIbes",
         category: "Other"
     },
     {
         id: 14,
-        src: "/images/Foto-12.png",
+        src: "/images/gallery/Foto-12.png",
         title: "Studio VIbes",
         category: "Other"
     },
     {
         id: 15,
-        src: "/images/Foto-13.png",
+        src: "/images/gallery/Foto-13.png",
         title: "Studio VIbes",
         category: "Other"
     },
     {
         id: 16,
-        src: "/images/Foto-14.png",
+        src: "/images/gallery/Foto-14.png",
         title: "Studio VIbes",
         category: "Other"
     },
     {
         id: 17,
-        src: "/images/Foto-6.png",
+        src: "/images/gallery/Foto-6.png",
         title: "Studio VIbes",
         category: "Other"
     },
     {
         id: 18,
-        src: "/images/Foto-15.png",
+        src: "/images/gallery/Foto-15.png",
         title: "Studio VIbes",
         category: "Other"
     },
     {
         id: 19,
-        src: "/images/Foto-15.png",
+        src: "/images/gallery/Foto-15.png",
         title: "Studio VIbes",
         category: "Other"
     }
