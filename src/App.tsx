@@ -4,8 +4,8 @@ import { LanguageProvider } from "./context/LanguageContext"
 import { Header } from "./components/common"
 import contentData from "./content.json"
 import "./styles/globals.css"
+
 import { Home, LinktreePage } from './pages'
-import CustomForm from './components/common/CustomForm/CustomForm';
 import ErrorBoundary from './ErrorBoundary';
 
 const App: FC = () => {

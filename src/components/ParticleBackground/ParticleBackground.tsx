@@ -1,12 +1,13 @@
 import { useCallback, useEffect, useState, FC } from "react"
 import Particles from "react-particles"
 import { loadSlim } from "tsparticles-slim"
-import type { Engine, Container } from "tsparticles-engine"
+import type { Engine } from "tsparticles-engine"
 
 const ParticleBackground: FC = () => {
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true)
   }, [])
 

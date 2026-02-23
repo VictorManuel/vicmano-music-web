@@ -1,56 +1,56 @@
-import { FC, useState, type ChangeEvent, type FormEvent } from "react"
+import { FC } from "react"
 import { useLanguage } from "../../../context/LanguageContext"
-import { Mail, Send, Instagram } from "lucide-react"
+import { Mail, Instagram } from "lucide-react"
 import { MotionDiv } from '../../common/Motion/MyMotionComponents'
-import { sendContactFormspree, type ContactFormData } from "../../../services/contact.service"
+// import { type ContactFormData } from "../../../services/contact.service"
 // import Footer from "../../common/Footer/Footer"
 
-interface FormState extends ContactFormData {}
+// interface FormState extends ContactFormData { }
 
 const ContactSection: FC = () => {
-  const { t, language } = useLanguage()
-  const [formState, setFormState] = useState<FormState>({
-    name: "",
-    email: "",
-    message: "",
-  })
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitSuccess, setSubmitSuccess] = useState(false)
+  const { t } = useLanguage()
+  // const [formState, setFormState] = useState<FormState>({
+  //   name: "",
+  //   email: "",
+  //   message: "",
+  // })
+  // const [isSubmitting, setIsSubmitting] = useState(false)
+  // const [submitSuccess, setSubmitSuccess] = useState(false)
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormState({
-      ...formState,
-      [e.target.name]: e.target.value,
-    })
-  }
+  // const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  //   setFormState({
+  //     ...formState,
+  //     [e.target.name]: e.target.value,
+  //   })
+  // }
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    setIsSubmitting(true)
+  // const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  //   e.preventDefault()
+  //   // setIsSubmitting(true)
 
-    try {
-      const response = await sendContactFormspree(formState)
-      
-      if (response.success) {
-        setSubmitSuccess(true)
-        setFormState({ name: "", email: "", message: "" })
-      } else {
-        // Manejar error
-        console.error('Error al enviar:', response.message)
-        alert(language === "en" ? "Error sending message. Please try again." : "Error al enviar el mensaje. Por favor, inténtalo de nuevo.")
-      }
-    } catch (error) {
-      console.error('Error:', error)
-      alert(language === "en" ? "Error sending message. Please try again." : "Error al enviar el mensaje. Por favor, inténtalo de nuevo.")
-    } finally {
-      setIsSubmitting(false)
-      
-      // Reset success message after 5 seconds
-      setTimeout(() => {
-        setSubmitSuccess(false)
-      }, 5000)
-    }
-  }
+  //   try {
+  //     const response = await sendContactFormspree(formState)
+
+  //     if (response.success) {
+  //       // setSubmitSuccess(true)
+  //       setFormState({ name: "", email: "", message: "" })
+  //     } else {
+  //       // Manejar error
+  //       console.error('Error al enviar:', response.message)
+  //       alert(language === "en" ? "Error sending message. Please try again." : "Error al enviar el mensaje. Por favor, inténtalo de nuevo.")
+  //     }
+  //   } catch (error) {
+  //     console.error('Error:', error)
+  //     alert(language === "en" ? "Error sending message. Please try again." : "Error al enviar el mensaje. Por favor, inténtalo de nuevo.")
+  //   } finally {
+  //     // setIsSubmitting(false)
+
+  //     // Reset success message after 5 seconds
+  //     setTimeout(() => {
+  //       // setSubmitSuccess(false)
+  //     }, 5000)
+  //   }
+  // }
 
   return (
     <section id="contact" className="min-h-screen bg-gradient-to-b from-black to-purple-950 snap-section full-section">

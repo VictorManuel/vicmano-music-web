@@ -1,13 +1,8 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from "react"
 
 interface ContentData {
-  [key: string]: {
-    [key: string]: {
-      [key: string]: string | {
-        [key: string]: string
-      }
-    }
-  }
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  [key: string]: any
 }
 
 interface LanguageContextType {
@@ -17,12 +12,7 @@ interface LanguageContextType {
   content: ContentData
 }
 
-interface LanguageContextType {
-  language: string
-  setLanguage: (lang: string) => void
-  t: (key: string, section?: string) => string
-  content: ContentData
-}
+
 
 const defaultContent: ContentData = {
   en: {
@@ -45,7 +35,7 @@ const defaultContent: ContentData = {
 
 const LanguageContext = createContext<LanguageContextType>({
   language: "en",
-  setLanguage: () => {},
+  setLanguage: () => { },
   t: (key: string) => key,
   content: defaultContent,
 })
@@ -57,10 +47,11 @@ interface LanguageProviderProps {
 
 export function LanguageProvider({ children, initialContent = defaultContent }: LanguageProviderProps) {
   const [language, setLanguage] = useState<string>("en")
-  const [content, setContent] = useState<ContentData>(initialContent)
+  const [content] = useState<ContentData>(initialContent)
   const [isClient, setIsClient] = useState<boolean>(false)
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsClient(true)
     const savedLanguage = localStorage.getItem("language")
     if (savedLanguage) {
@@ -101,6 +92,7 @@ export function LanguageProvider({ children, initialContent = defaultContent }: 
   return <LanguageContext.Provider value={{ language, setLanguage, t, content }}>{children}</LanguageContext.Provider>
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export function useLanguage(): LanguageContextType {
   const context = useContext(LanguageContext)
   if (!context) {

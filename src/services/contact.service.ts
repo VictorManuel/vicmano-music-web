@@ -44,7 +44,7 @@ export const sendContactFormspree = async (
       success: false,
       message: `Error al enviar el mensaje: ${res.status} ${errorText}`,
     };
-  } catch (err) {
+  } catch {
     clearTimeout(t);
     return { success: false, message: 'Error al enviar el mensaje' };
   }
@@ -91,7 +91,7 @@ export const sendContactGoogleAppsScript = async (
       success: false,
       message: data?.message ?? 'No se pudo confirmar el envío',
     };
-  } catch (err) {
+  } catch {
     clearTimeout(t);
     return { success: false, message: 'Error al enviar el mensaje' };
   }
