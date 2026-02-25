@@ -17,7 +17,7 @@ interface VerticalVideo {
 const verticalVideos: VerticalVideo[] = [
     {
         id: 1,
-        src: "/videos/drops/See-you-later.mp4",
+        src: "/videos/drops/See-you-later.min.mp4",
         title: "See You Later",
         description: {
             es: "Momentos épicos de See You Later.",
@@ -26,7 +26,7 @@ const verticalVideos: VerticalVideo[] = [
     },
     {
         id: 2,
-        src: "/videos/drops/0924-1.mov",
+        src: "/videos/drops/0924-1.min.mp4",
         title: "Live Drop 09/24",
         description: {
             es: "La energía de la pista en su punto máximo.",
@@ -35,7 +35,7 @@ const verticalVideos: VerticalVideo[] = [
     },
     {
         id: 3,
-        src: "/videos/drops/Terraza_15_12_2024.mp4",
+        src: "/videos/drops/Terraza_15_12_2024.min.mp4",
         title: "Behind the Booth",
         description: {
             es: "Vista exclusiva desde la cabina.",
@@ -53,13 +53,46 @@ const ReelCard: FC<{
     language: string
 }> = ({ video, isActive, onToggleAudio, language }) => {
     const { waveform, isLoading } = useAudioWaveform(video.src, WAVE_BARS);
+    const videoRef = useRef<HTMLVideoElement>(null);
+    const containerRef = useRef<HTMLDivElement>(null);
     const [currentTime, setCurrentTime] = useState(0);
     const [duration, setDuration] = useState(0);
+    const [isScrubbing, setIsScrubbing] = useState(false);
 
     const handleTimeUpdate = (e: React.SyntheticEvent<HTMLVideoElement>) => {
         const videoEl = e.currentTarget;
-        setCurrentTime(videoEl.currentTime);
+        if (!isScrubbing) {
+            setCurrentTime(videoEl.currentTime);
+        }
         if (duration === 0) setDuration(videoEl.duration);
+    };
+
+    const handleSeek = (e: React.MouseEvent | React.TouchEvent) => {
+        if (!containerRef.current || !videoRef.current || duration === 0) return;
+
+        const rect = containerRef.current.getBoundingClientRect();
+        const clientX = 'touches' in e ? e.touches[0].clientX : (e as React.MouseEvent).clientX;
+        const x = Math.max(0, Math.min(clientX - rect.left, rect.width));
+        const percentage = x / rect.width;
+        const newTime = percentage * duration;
+
+        videoRef.current.currentTime = newTime;
+        setCurrentTime(newTime);
+    };
+
+    const handleMouseDown = (e: React.MouseEvent) => {
+        setIsScrubbing(true);
+        handleSeek(e);
+    };
+
+    const handleMouseMove = (e: React.MouseEvent) => {
+        if (isScrubbing) {
+            handleSeek(e);
+        }
+    };
+
+    const handleMouseUp = () => {
+        setIsScrubbing(false);
     };
 
     const progress = duration > 0 ? (currentTime / duration) * 100 : 0;
@@ -67,6 +100,7 @@ const ReelCard: FC<{
     return (
         <div className="aspect-[9/16] bg-purple-900/10 rounded-3xl overflow-hidden border border-purple-500/20 shadow-2xl transition-all duration-500 group-hover:border-purple-400/40 group-hover:shadow-purple-500/20 group-hover:-translate-y-2">
             <video
+                ref={videoRef}
                 src={video.src}
                 className="w-full h-full object-cover"
                 autoPlay
@@ -85,10 +119,25 @@ const ReelCard: FC<{
                 {isActive ? <Volume2 size={24} /> : <VolumeX size={24} />}
             </button>
 
-            {/* Audio Wave Progress Bar */}
-            <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-black/80 to-transparent flex items-end justify-center gap-[2px] px-6 pb-4 opacity-100 transition-opacity duration-300 pointer-events-none">
+            {/* Audio Wave Progress Bar (Timeline) */}
+            <div
+                ref={containerRef}
+                className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-black/80 to-transparent flex items-end justify-center gap-[2px] px-6 pb-4 opacity-100 transition-opacity duration-300 cursor-pointer select-none z-30"
+                onMouseDown={handleMouseDown}
+                onMouseMove={handleMouseMove}
+                onMouseUp={handleMouseUp}
+                onMouseLeave={handleMouseUp}
+                onTouchStart={(e) => {
+                    setIsScrubbing(true);
+                    handleSeek(e);
+                }}
+                onTouchMove={(e) => {
+                    if (isScrubbing) handleSeek(e);
+                }}
+                onTouchEnd={() => setIsScrubbing(false)}
+            >
                 {isLoading ? (
-                    <div className="flex items-end gap-1 mb-2 animate-pulse">
+                    <div className="flex items-end gap-1 mb-2 animate-pulse pointer-events-none">
                         {[...Array(WAVE_BARS)].map((_, i) => (
                             <div key={i} className="w-[4px] h-4 bg-white/10 rounded-full" />
                         ))}
@@ -101,7 +150,7 @@ const ReelCard: FC<{
                         return (
                             <div
                                 key={i}
-                                className={`w-[4px] rounded-full transition-all duration-300 ${isPlayed ? 'bg-gradient-to-t from-purple-500 to-pink-500' : 'bg-white/20'}`}
+                                className={`w-[4px] rounded-full transition-all duration-300 pointer-events-none ${isPlayed ? 'bg-gradient-to-t from-purple-500 to-pink-500' : 'bg-white/20'}`}
                                 style={{
                                     height: `${height}%`,
                                     opacity: isPlayed ? 1 : 0.4
@@ -128,7 +177,7 @@ const ReelsSection: FC = () => {
     const [activeAudioId, setActiveAudioId] = useState<number | null>(null);
 
     return (
-        <section id="reels" className="min-h-screen py-20 bg-black/20 backdrop-blur-sm relative overflow-hidden snap-section full-section">
+        <section id="reels" className="min-h-screen py-10 bg-black/20 backdrop-blur-sm relative overflow-hidden snap-section full-section flex flex-col justify-center">
             {/* Background Accent */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-purple-600/10 rounded-full blur-[120px] pointer-events-none"></div>
 
@@ -141,16 +190,16 @@ const ReelsSection: FC = () => {
                     className="text-center mb-16"
                 >
                     <h2 className="text-4xl md:text-5xl font-audiowide mb-4 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-                        {language === 'es' ? 'Vibras Verticales' : 'Vertical Vibes'}
+                        {language === 'es' ? 'Drops' : 'Drops'}
                     </h2>
                     <p className="text-gray-400 text-lg max-w-2xl mx-auto">
                         {language === 'es'
-                            ? 'Explora mis momentos favoritos en formato vertical. Reels, Shorts y contenido exclusivo.'
-                            : 'Explore my favorite moments in vertical format. Reels, Shorts, and exclusive content.'}
+                            ? 'Algunos drops, para escuchar, para reel, para shorts, para música'
+                            : 'Some drops, to listen, for reels, for shorts, for music'}
                     </p>
                 </MotionDiv>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto items-center justify-items-center">
                     {verticalVideos.map((video, index) => (
                         <MotionDiv
                             key={video.id}
@@ -158,7 +207,7 @@ const ReelsSection: FC = () => {
                             whileInView={{ opacity: 1, scale: 1 }}
                             transition={{ duration: 0.5, delay: index * 0.1 }}
                             viewport={{ once: true }}
-                            className="group relative"
+                            className="group relative w-full max-w-[280px]"
                         >
                             <ReelCard
                                 video={video}

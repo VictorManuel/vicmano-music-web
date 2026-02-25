@@ -6,22 +6,28 @@ import fs from 'fs';
 const execAsync = promisify(exec);
 
 const VIDEO_DIR = './public/videos/drops';
+const SOURCE_DIR = './media-sources';
 const BARS = 40;
 
 async function processVideos() {
     console.log('🚀 Iniciando optimización de media...');
 
-    if (!fs.existsSync(VIDEO_DIR)) {
-        console.error('❌ Directorio de videos no encontrado:', VIDEO_DIR);
-        return;
+    if (!fs.existsSync(SOURCE_DIR)) {
+        console.log(`📂 Creando directorio de origen: ${SOURCE_DIR}`);
+        fs.mkdirSync(SOURCE_DIR, { recursive: true });
     }
 
-    const files = fs.readdirSync(VIDEO_DIR).filter(f =>
-        (f.endsWith('.mp4') || f.endsWith('.mov') || f.endsWith('.MOV')) && !f.includes('.min.')
+    if (!fs.existsSync(VIDEO_DIR)) {
+        console.log(`📂 Creando directorio de salida: ${VIDEO_DIR}`);
+        fs.mkdirSync(VIDEO_DIR, { recursive: true });
+    }
+
+    const files = fs.readdirSync(SOURCE_DIR).filter(f =>
+        (f.toLowerCase().endsWith('.mp4') || f.toLowerCase().endsWith('.mov'))
     );
 
     for (const file of files) {
-        const inputPath = path.join(VIDEO_DIR, file);
+        const inputPath = path.join(SOURCE_DIR, file);
         const outputBase = file.substring(0, file.lastIndexOf('.'));
         const outputPath = path.join(VIDEO_DIR, `${outputBase}.min.mp4`);
         const waveformPath = path.join(VIDEO_DIR, `${outputBase}.waveform.json`);
