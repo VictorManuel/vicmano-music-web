@@ -26,7 +26,7 @@ const verticalVideos: VerticalVideo[] = [
     },
     {
         id: 2,
-        src: "/videos/drops/Terraza_15_12_2024.min.mp4",
+        src: "/videos/drops/Terraza-15-12-2024.min.mp4",
         title: "Terraza",
         description: {
             es: "Vista exclusiva desde la cabina.",
