@@ -21,8 +21,8 @@ export const Home: FC = () => {
         <AboutSection />
       </ErrorBoundaryWrapper>
 
-      <MediaSection />
       <ReelsSection />
+      <MediaSection />
       {/* <MusicSection /> */}
       <ContactSection />
 

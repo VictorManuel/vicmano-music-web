@@ -20,13 +20,40 @@ const verticalVideos: VerticalVideo[] = [
         src: "/videos/drops/See-you-later.min.mp4",
         title: "See You Later",
         description: {
-            es: "Momentos épicos de See You Later.",
-            en: "Epic moments from See You Later."
+            es: "Momentos del after de See You Later.",
+            en: "Moments from the after of See You Later."
         }
     },
     {
         id: 2,
-        src: "/videos/drops/0924-1.min.mp4",
+        src: "/videos/drops/Terraza_15_12_2024.min.mp4",
+        title: "Terraza",
+        description: {
+            es: "Vista exclusiva desde la cabina.",
+            en: "Exclusive view from the booth."
+        }
+    },
+    {
+        id: 3,
+        src: "/videos/drops/Brian's Backyard.min.mp4",
+        title: "Brian's Backyard",
+        description: {
+            es: "Momentos del after de See you Later.",
+            en: "Moments from the after of See you Later."
+        }
+    },
+    {
+        id: 4,
+        src: "/videos/drops/Terraza 01.min.mp4",
+        title: "Terraza 01",
+        description: {
+            es: "Directo desde la terraza.",
+            en: "Live from the terrace."
+        }
+    },
+    {
+        id: 5,
+        src: "/videos/drops/kook.min.mp4",
         title: "Live Drop 09/24",
         description: {
             es: "La energía de la pista en su punto máximo.",
@@ -34,12 +61,21 @@ const verticalVideos: VerticalVideo[] = [
         }
     },
     {
-        id: 3,
-        src: "/videos/drops/Terraza_15_12_2024.min.mp4",
-        title: "Behind the Booth",
+        id: 6,
+        src: "/videos/drops/Detroit Techno City.min.mp4",
+        title: "Detroit Techno City",
         description: {
-            es: "Vista exclusiva desde la cabina.",
-            en: "Exclusive view from the booth."
+            es: "La esencia del techno de Detroit.",
+            en: "The essence of Detroit techno."
+        }
+    },
+    {
+        id: 7,
+        src: "/videos/drops/Necochea.min.mp4",
+        title: "Necochea",
+        description: {
+            es: "Salteamos la misa en Necochea.",
+            en: "We skipped mass in Necochea."
         }
     }
 ];
@@ -177,7 +213,7 @@ const ReelsSection: FC = () => {
     const [activeAudioId, setActiveAudioId] = useState<number | null>(null);
 
     return (
-        <section id="reels" className="min-h-screen py-10 bg-black/20 backdrop-blur-sm relative overflow-hidden snap-section full-section flex flex-col justify-center">
+        <section id="reels" className="min-h-screen py-11 bg-black/20 backdrop-blur-sm relative overflow-hidden snap-section full-section flex flex-col justify-center">
             {/* Background Accent */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-purple-600/10 rounded-full blur-[120px] pointer-events-none"></div>
 
@@ -187,11 +223,11 @@ const ReelsSection: FC = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}
                     viewport={{ once: true }}
-                    className="text-center mb-16"
+                    className="text-center mb-12"
                 >
-                    <h2 className="text-4xl md:text-5xl font-audiowide mb-4 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+                    {/* <h2 className="text-4xl md:text-5xl font-audiowide mb-4 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
                         {language === 'es' ? 'Drops' : 'Drops'}
-                    </h2>
+                    </h2> */}
                     <p className="text-gray-400 text-lg max-w-2xl mx-auto">
                         {language === 'es'
                             ? 'Algunos drops, para escuchar, para reel, para shorts, para música'
@@ -199,7 +235,7 @@ const ReelsSection: FC = () => {
                     </p>
                 </MotionDiv>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto items-center justify-items-center">
+                <div className="flex flex-col lg:flex-row lg:overflow-x-auto lg:snap-x lg:snap-mandatory gap-6 w-full pb-8 px-4 items-center lg:items-start custom-scrollbar">
                     {verticalVideos.map((video, index) => (
                         <MotionDiv
                             key={video.id}
@@ -207,7 +243,7 @@ const ReelsSection: FC = () => {
                             whileInView={{ opacity: 1, scale: 1 }}
                             transition={{ duration: 0.5, delay: index * 0.1 }}
                             viewport={{ once: true }}
-                            className="group relative w-full max-w-[280px]"
+                            className="group relative w-full lg:max-w-[280px] lg:min-w-[280px] lg:flex-shrink-0 lg:snap-center"
                         >
                             <ReelCard
                                 video={video}
@@ -223,4 +259,25 @@ const ReelsSection: FC = () => {
     );
 };
 
+
 export default ReelsSection;
+
+// Custom Scrollbar Styles
+const style = document.createElement('style');
+style.textContent = `
+  .custom-scrollbar::-webkit-scrollbar {
+    height: 8px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: linear-gradient(to right, #a855f7, #ec4899);
+    border-radius: 10px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(to right, #9333ea, #db2777);
+  }
+`;
+document.head.appendChild(style);
