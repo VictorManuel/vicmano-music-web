@@ -35,7 +35,7 @@ const verticalVideos: VerticalVideo[] = [
     },
     {
         id: 3,
-        src: "/videos/drops/Brian's Backyard.min.mp4",
+        src: "/videos/drops/Brians-Backyard.min.mp4",
         title: "Brian's Backyard",
         description: {
             es: "Momentos del after de See you Later.",
@@ -44,7 +44,7 @@ const verticalVideos: VerticalVideo[] = [
     },
     {
         id: 4,
-        src: "/videos/drops/Terraza 01.min.mp4",
+        src: "/videos/drops/Terraza-01.min.mp4",
         title: "Terraza 01",
         description: {
             es: "Directo desde la terraza.",
@@ -53,26 +53,26 @@ const verticalVideos: VerticalVideo[] = [
     },
     {
         id: 5,
-        src: "/videos/drops/kook.min.mp4",
-        title: "Live Drop 09/24",
+        src: "/videos/drops/Kook.min.mp4",
+        title: "Kook x Amazonia",
         description: {
-            es: "La energía de la pista en su punto máximo.",
-            en: "Dancefloor energy at its peak."
+            es: "Un warmup que se picó.",
+            en: "A warmup that was lit."
         }
     },
     {
         id: 6,
-        src: "/videos/drops/Detroit Techno City.min.mp4",
+        src: "/videos/drops/Detroit-Techno-City.min.mp4",
         title: "Detroit Techno City",
         description: {
-            es: "La esencia del techno de Detroit.",
-            en: "The essence of Detroit techno."
+            es: "Una noche realmente desaforada.",
+            en: "A lit night."
         }
     },
     {
         id: 7,
         src: "/videos/drops/Necochea.min.mp4",
-        title: "Necochea",
+        title: "Necochea Furiosa",
         description: {
             es: "Salteamos la misa en Necochea.",
             en: "We skipped mass in Necochea."
@@ -91,9 +91,45 @@ const ReelCard: FC<{
     const { waveform, isLoading } = useAudioWaveform(video.src, WAVE_BARS);
     const videoRef = useRef<HTMLVideoElement>(null);
     const containerRef = useRef<HTMLDivElement>(null);
+    const [isVisible, setIsVisible] = useState(false);
+    const cardRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                setIsVisible(entry.isIntersecting);
+            },
+            {
+                threshold: 0.2 // Se considera visible si el 20% está en pantalla
+            }
+        );
+
+        if (cardRef.current) {
+            observer.observe(cardRef.current);
+        }
+
+        return () => {
+            if (cardRef.current) {
+                observer.unobserve(cardRef.current);
+            }
+        };
+    }, []);
+
     const [currentTime, setCurrentTime] = useState(0);
     const [duration, setDuration] = useState(0);
     const [isScrubbing, setIsScrubbing] = useState(false);
+
+    useEffect(() => {
+        if (!videoRef.current) return;
+
+        if (isVisible) {
+            videoRef.current.play().catch(() => {
+                // Autoplay bloqueado por el navegador hasta interacción del usuario
+            });
+        } else {
+            videoRef.current.pause();
+        }
+    }, [isVisible]);
 
     const handleTimeUpdate = (e: React.SyntheticEvent<HTMLVideoElement>) => {
         const videoEl = e.currentTarget;
@@ -134,15 +170,18 @@ const ReelCard: FC<{
     const progress = duration > 0 ? (currentTime / duration) * 100 : 0;
 
     return (
-        <div className="aspect-[9/16] bg-purple-900/10 rounded-3xl overflow-hidden border border-purple-500/20 shadow-2xl transition-all duration-500 group-hover:border-purple-400/40 group-hover:shadow-purple-500/20 group-hover:-translate-y-2">
+        <div
+            ref={cardRef}
+            className="aspect-[9/16] bg-purple-900/10 rounded-3xl overflow-hidden border border-purple-500/20 shadow-2xl transition-all duration-500 group-hover:border-purple-400/40 group-hover:shadow-purple-500/20 group-hover:-translate-y-2"
+        >
             <video
                 ref={videoRef}
-                src={video.src}
+                src={isVisible ? video.src : undefined}
                 className="w-full h-full object-cover"
-                autoPlay
                 muted={!isActive}
                 loop
                 playsInline
+                preload={isVisible ? "auto" : "none"}
                 onTimeUpdate={handleTimeUpdate}
             />
 

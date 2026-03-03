@@ -71,6 +71,9 @@
     },
     "media": {
       "title": "Multimedia"
+    },
+    "reels": {
+      "title": "Drops"
     }
   },
   "en": {
@@ -145,6 +148,9 @@
     },
     "media": {
       "title": "Multimedia"
+    },
+    "reels": {
+      "title": "Drops"
     }
   }
 }
