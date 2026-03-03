@@ -9,6 +9,14 @@ const VIDEO_DIR = './public/videos/drops';
 const SOURCE_DIR = './media-sources';
 const BARS = 40;
 
+function sanitizeFilename(name) {
+    return name
+        .replace(/'/g, '') // Quitar apostrofes
+        .replace(/[^a-z0-9]/gi, '-') // Reemplazar todo lo no alfanumérico por guiones
+        .replace(/-+/g, '-') // Colapsar guiones múltiples
+        .replace(/^-|-$/g, ''); // Quitar guiones al inicio o final
+}
+
 async function processVideos() {
     console.log('🚀 Iniciando optimización de media...');
 
@@ -28,7 +36,8 @@ async function processVideos() {
 
     for (const file of files) {
         const inputPath = path.join(SOURCE_DIR, file);
-        const outputBase = file.substring(0, file.lastIndexOf('.'));
+        const rawName = file.substring(0, file.lastIndexOf('.'));
+        const outputBase = sanitizeFilename(rawName);
         const outputPath = path.join(VIDEO_DIR, `${outputBase}.min.mp4`);
         const waveformPath = path.join(VIDEO_DIR, `${outputBase}.waveform.json`);
 

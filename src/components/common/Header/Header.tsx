@@ -57,6 +57,7 @@ const Header: FC = () => {
 
   const navLinks: NavLink[] = [
     { href: "about", label: t("title", "about") },
+    { href: "reels", label: t("title", "reels") },
     { href: "media", label: t("title", "media") },
     // { href: "gallery", label: t("title", "gallery") },
     // { href: "instagram", label: t("title", "instagram") },
