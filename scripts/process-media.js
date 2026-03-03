@@ -39,7 +39,7 @@ async function processVideos() {
         const rawName = file.substring(0, file.lastIndexOf('.'));
         const outputBase = sanitizeFilename(rawName);
         const outputPath = path.join(VIDEO_DIR, `${outputBase}.min.mp4`);
-        const waveformPath = path.join(VIDEO_DIR, `${outputBase}.waveform.json`);
+        const waveformPath = path.join(VIDEO_DIR, `${outputBase}.min.waveform.json`);
 
         // 1. Optimizar Video si no existe el mini
         if (!fs.existsSync(outputPath)) {
