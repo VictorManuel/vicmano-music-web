@@ -4,6 +4,8 @@ import { Download, X, ChevronLeft, ChevronRight } from "lucide-react"
 interface GalleryItem {
     id: number
     src: string
+    srcThumb: string
+    srcLarge: string
     title: string
     category: "Studio" | "Party" | "Logo" | "Other"
 }
@@ -47,7 +49,7 @@ const MediaModal: FC<MediaModalProps> = ({ item, onClose, onNext, onPrevious, on
                 <div className="p-6 bg-purple-900/20 backdrop-blur-sm border border-purple-500/20 rounded-lg overflow-hidden flex flex-col justify-between gap-6">
                     <div className="relative">
                         <img
-                            src={item.src}
+                            src={item.srcLarge}
                             alt={item.title}
                             className="w-full h-auto max-h-[70vh] object-contain"
                         />
