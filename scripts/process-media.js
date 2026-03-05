@@ -54,7 +54,24 @@ async function processVideos() {
             }
         }
 
-        // 2. Extraer Waveform
+        // 2. Generar Poster si no existe
+        const posterPath = path.join(VIDEO_DIR, `${outputBase}.min.poster.webp`);
+        if (!fs.existsSync(posterPath)) {
+            console.log(`🖼️ Generando poster para: ${file}...`);
+            try {
+                const tempPoster = path.join(VIDEO_DIR, `${outputBase}.temp.png`);
+                // Extraer frame del segundo 1 como PNG
+                await execAsync(`ffmpeg -i "${inputPath}" -ss 00:00:01 -vframes 1 -q:v 2 -y "${tempPoster}"`);
+                // Convertir a WebP con cwebp
+                await execAsync(`cwebp -q 80 "${tempPoster}" -o "${posterPath}"`);
+                fs.unlinkSync(tempPoster);
+                console.log(`✅ Poster generado para ${file}.`);
+            } catch (e) {
+                console.error(`❌ Error generando poster para ${file}:`, e.message);
+            }
+        }
+
+        // 3. Extraer Waveform
         if (!fs.existsSync(waveformPath)) {
             console.log(`📊 Generando onda de audio para: ${file}...`);
             try {

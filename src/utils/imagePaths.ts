@@ -10,5 +10,5 @@ export const getImagePath = (imageName: string): string => {
 export const IMAGES = {
   logo: () => getImagePath('logo.png'),
   vicmano: () => getImagePath('profile.png'),
-  performance: () => getImagePath('performance.png'),
+  performance: () => getImagePath('performance.webp'),
 } as const;

@@ -12,12 +12,14 @@ interface VerticalVideo {
         es: string;
         en: string;
     };
+    poster: string;
 }
 
 const verticalVideos: VerticalVideo[] = [
     {
         id: 1,
         src: "/videos/drops/See-you-later.min.mp4",
+        poster: "/videos/drops/See-you-later.min.poster.webp",
         title: "See You Later",
         description: {
             es: "Momentos del after de See You Later.",
@@ -27,6 +29,7 @@ const verticalVideos: VerticalVideo[] = [
     {
         id: 2,
         src: "/videos/drops/Terraza-15-12-2024.min.mp4",
+        poster: "/videos/drops/Terraza-15-12-2024.min.poster.webp",
         title: "Terraza",
         description: {
             es: "Vista exclusiva desde la cabina.",
@@ -36,6 +39,7 @@ const verticalVideos: VerticalVideo[] = [
     {
         id: 3,
         src: "/videos/drops/Brians-Backyard.min.mp4",
+        poster: "/videos/drops/Brians-Backyard.min.poster.webp",
         title: "Brian's Backyard",
         description: {
             es: "Momentos del after de See you Later.",
@@ -45,6 +49,7 @@ const verticalVideos: VerticalVideo[] = [
     {
         id: 4,
         src: "/videos/drops/Terraza-01.min.mp4",
+        poster: "/videos/drops/Terraza-01.min.poster.webp",
         title: "Terraza 01",
         description: {
             es: "Directo desde la terraza.",
@@ -54,6 +59,7 @@ const verticalVideos: VerticalVideo[] = [
     {
         id: 5,
         src: "/videos/drops/Kook.min.mp4",
+        poster: "/videos/drops/Kook.min.poster.webp",
         title: "Kook x Amazonia",
         description: {
             es: "Un warmup que se picó.",
@@ -63,6 +69,7 @@ const verticalVideos: VerticalVideo[] = [
     {
         id: 6,
         src: "/videos/drops/Detroit-Techno-City.min.mp4",
+        poster: "/videos/drops/Detroit-Techno-City.min.poster.webp",
         title: "Detroit Techno City",
         description: {
             es: "Una noche realmente desaforada.",
@@ -72,6 +79,7 @@ const verticalVideos: VerticalVideo[] = [
     {
         id: 7,
         src: "/videos/drops/Necochea.min.mp4",
+        poster: "/videos/drops/Necochea.min.poster.webp",
         title: "Necochea Furiosa",
         description: {
             es: "Salteamos la misa en Necochea.",
@@ -177,12 +185,16 @@ const ReelCard: FC<{
             <video
                 ref={videoRef}
                 src={isVisible ? video.src : undefined}
-                className="w-full h-full object-cover"
+                className={`w-full h-full object-cover transition-opacity duration-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
                 muted={!isActive}
                 loop
                 playsInline
-                preload={isVisible ? "auto" : "none"}
+                poster={video.poster}
+                preload={isVisible ? "auto" : "metadata"}
                 onTimeUpdate={handleTimeUpdate}
+                style={{
+                    background: `url(${video.poster}) center/cover no-repeat`,
+                }}
             />
 
             {/* Audio Toggle Icon */}

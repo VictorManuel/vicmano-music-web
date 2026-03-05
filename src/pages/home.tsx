@@ -2,15 +2,12 @@ import { FC } from "react"
 import { HeroSection, AboutSection, MediaSection, ReelsSection, ContactSection } from "../components/sections"
 import { ErrorBoundaryWrapper } from "../components/common"
 
-import { Helmet } from 'react-helmet-async';
+import SEO from "../components/common/SEO/SEO";
 
 export const Home: FC = () => {
   return (
     <div>
-      <Helmet>
-        <title>Vicmano Music - DJ & Producer</title>
-        <meta name="description" content="Vicmano - Minimal Techno, Tech House & Hard Techno DJ. Listen to my sets and check upcoming events." />
-      </Helmet>
+      <SEO />
       <ErrorBoundaryWrapper componentName="HeroSection">
         <HeroSection />
       </ErrorBoundaryWrapper>

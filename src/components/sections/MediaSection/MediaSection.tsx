@@ -7,6 +7,8 @@ import MediaModal from "./MediaModal"
 interface GalleryItem {
     id: number
     src: string
+    srcThumb: string
+    srcLarge: string
     title: string
     category: "Studio" | "Party" | "Logo" | "Other"
 }
@@ -21,123 +23,46 @@ interface VideoItem {
     }
 }
 
-// Datos de ejemplo para la galería
+// Datos de la galería procesados para incluir versiones optimizadas
 const galleryItems: GalleryItem[] = [
-    {
-        id: 1,
-        src: "/images/logo-texto.png",
-        title: "Img Logo",
-        category: "Logo"
-    },
-    {
-        id: 2,
-        src: "/images/logo.png",
-        title: "Studio Vibes",
-        category: "Logo"
-    },
-    {
-        id: 3,
-        src: "/images/gallery/Foto-5.png",
-        title: "Studio Vibes",
-        category: "Studio"
-    },
-    {
-        id: 4,
-        src: "/images/gallery/Foto-2.png",
-        title: "Studio Vibes",
-        category: "Studio"
-    },
-    {
-        id: 5,
-        src: "/images/gallery/Foto.png",
-        title: "Img Logo",
-        category: "Logo"
-    },
-    {
-        id: 6,
-        src: "/images/gallery/Foto-15.png",
-        title: "Text Logo",
-        category: "Logo"
-    },
-    {
-        id: 7,
-        src: "/images/gallery/Foto-8.png",
-        title: "Studio VIbes",
-        category: "Other"
-    },
-    {
-        id: 8,
-        src: "/images/gallery/Foto-4.png",
-        title: "Studio VIbes",
-        category: "Other"
-    },
-    {
-        id: 9,
-        src: "/images/gallery/Foto-7.png",
-        title: "Studio VIbes",
-        category: "Other"
-    },
-    {
-        id: 10,
-        src: "/images/gallery/Foto-3.png",
-        title: "Studio VIbes",
-        category: "Other"
-    },
-    {
-        id: 11,
-        src: "/images/gallery/Foto-9.png",
-        title: "Studio VIbes",
-        category: "Other"
-    },
-    {
-        id: 12,
-        src: "/images/gallery/Foto-10.png",
-        title: "Studio VIbes",
-        category: "Other"
-    },
-    {
-        id: 13,
-        src: "/images/gallery/Foto-11.png",
-        title: "Studio VIbes",
-        category: "Other"
-    },
-    {
-        id: 14,
-        src: "/images/gallery/Foto-12.png",
-        title: "Studio VIbes",
-        category: "Other"
-    },
-    {
-        id: 15,
-        src: "/images/gallery/Foto-13.png",
-        title: "Studio VIbes",
-        category: "Other"
-    },
-    {
-        id: 16,
-        src: "/images/gallery/Foto-14.png",
-        title: "Studio VIbes",
-        category: "Other"
-    },
-    {
-        id: 17,
-        src: "/images/gallery/Foto-6.png",
-        title: "Studio VIbes",
-        category: "Other"
-    },
-    {
-        id: 18,
-        src: "/images/gallery/Foto-15.png",
-        title: "Studio VIbes",
-        category: "Other"
-    },
-    {
-        id: 19,
-        src: "/images/gallery/Foto-15.png",
-        title: "Studio VIbes",
-        category: "Other"
+    { id: 1, src: "/images/logo-texto.png", title: "Img Logo", category: "Logo" },
+    { id: 2, src: "/images/logo.png", title: "Studio Vibes", category: "Logo" },
+    { id: 3, src: "/images/gallery/Foto-5.png", title: "Studio Vibes", category: "Studio" },
+    { id: 4, src: "/images/gallery/Foto-2.png", title: "Studio Vibes", category: "Studio" },
+    { id: 5, src: "/images/gallery/Foto.png", title: "Img Logo", category: "Logo" },
+    { id: 6, src: "/images/gallery/Foto-15.png", title: "Text Logo", category: "Logo" },
+    { id: 7, src: "/images/gallery/Foto-8.png", title: "Studio VIbes", category: "Other" },
+    { id: 8, src: "/images/gallery/Foto-4.png", title: "Studio VIbes", category: "Other" },
+    { id: 9, src: "/images/gallery/Foto-7.png", title: "Studio VIbes", category: "Other" },
+    { id: 10, src: "/images/gallery/Foto-3.png", title: "Studio VIbes", category: "Other" },
+    { id: 11, src: "/images/gallery/Foto-9.png", title: "Studio VIbes", category: "Other" },
+    { id: 12, src: "/images/gallery/Foto-10.png", title: "Studio VIbes", category: "Other" },
+    { id: 13, src: "/images/gallery/Foto-11.png", title: "Studio VIbes", category: "Other" },
+    { id: 14, src: "/images/gallery/Foto-12.png", title: "Studio VIbes", category: "Other" },
+    { id: 15, src: "/images/gallery/Foto-13.png", title: "Studio VIbes", category: "Other" },
+    { id: 16, src: "/images/gallery/Foto-14.png", title: "Studio VIbes", category: "Other" },
+    { id: 17, src: "/images/gallery/Foto-6.png", title: "Studio VIbes", category: "Other" },
+    { id: 18, src: "/images/gallery/Foto-15.png", title: "Studio VIbes", category: "Other" },
+    { id: 19, src: "/images/gallery/Foto-15.png", title: "Studio VIbes", category: "Other" }
+].map(item => {
+    // Si la imagen está en /images/gallery/ (PNG original), generamos las rutas WebP
+    if (item.src.includes('/gallery/')) {
+        const fileName = item.src.split('/').pop()?.split('.')[0];
+        return {
+            ...item,
+            category: item.category as "Studio" | "Party" | "Logo" | "Other",
+            srcThumb: `/images/gallery/optimized/thumb/${fileName}.webp`,
+            srcLarge: `/images/gallery/optimized/large/${fileName}.webp`
+        } as GalleryItem;
     }
-]
+    // Para logo y otros fuera de la galería, usamos la misma por ahora
+    return {
+        ...item,
+        category: item.category as "Studio" | "Party" | "Logo" | "Other",
+        srcThumb: item.src,
+        srcLarge: item.src
+    } as GalleryItem;
+});
 
 // Datos de ejemplo para videos
 const videos: VideoItem[] = [
@@ -254,7 +179,8 @@ const MediaSection: FC = () => {
             const url = window.URL.createObjectURL(blob)
             const link = document.createElement("a")
             link.href = url
-            link.download = item.title.replace(/\s+/g, "_") + ".jpg"
+            const ext = item.src.split('.').pop();
+            link.download = `${item.title.replace(/\s+/g, "_")}.${ext}`
             document.body.appendChild(link)
             link.click()
             document.body.removeChild(link)
@@ -284,8 +210,9 @@ const MediaSection: FC = () => {
                                                 onClick={() => openModal(item)}
                                             >
                                                 <img
-                                                    src={item.src}
+                                                    src={item.srcThumb}
                                                     alt={item.title}
+                                                    loading="lazy"
                                                     className="w-auto h-full object-contain border border-white/10 rounded-lg"
                                                 />
                                             </div>
@@ -299,8 +226,9 @@ const MediaSection: FC = () => {
                                                 onClick={() => openModal(item)}
                                             >
                                                 <img
-                                                    src={item.src}
+                                                    src={item.srcThumb}
                                                     alt={item.title}
+                                                    loading="lazy"
                                                     className="w-auto h-full object-contain border border-white/10 rounded-lg"
                                                 />
                                             </div>
@@ -316,8 +244,9 @@ const MediaSection: FC = () => {
                                         onClick={() => openModal(item)}
                                     >
                                         <img
-                                            src={item.src}
+                                            src={item.srcThumb}
                                             alt={item.title}
+                                            loading="lazy"
                                             className="w-full h-auto object-contain border border-white/10 rounded-lg"
                                         />
                                         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-2">

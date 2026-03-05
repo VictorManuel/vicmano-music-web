@@ -74,6 +74,10 @@
     },
     "reels": {
       "title": "Drops"
+    },
+    "seo": {
+      "title": "Vicmano | Minimal Techno & Tech House DJ",
+      "description": "Explora el universo sonoro de Vicmano. Sets de Minimal Techno, Tech House y Hard Techno. Revive mis presentaciones y mantente al tanto de nuevas fechas."
     }
   },
   "en": {
@@ -151,6 +155,10 @@
     },
     "reels": {
       "title": "Drops"
+    },
+    "seo": {
+      "title": "Vicmano | Minimal Techno & Tech House DJ",
+      "description": "Explore the sonic universe of Vicmano. Minimal Techno, Tech House, and Hard Techno sets. Relive my performances and stay updated on new dates."
     }
   }
 }
