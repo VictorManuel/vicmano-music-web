@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Helmet } from 'react-helmet-async';
+import SEO from '../components/common/SEO/SEO';
 import { useLanguage } from '../context/LanguageContext';
 import { Instagram, Youtube, Mail, Ticket, ExternalLink, Globe } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -103,10 +103,11 @@ const LinktreePage: FC = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 flex items-center justify-center p-4 relative overflow-hidden">
-      <Helmet>
-        <title>{finalContent.title} - Links</title>
-        <meta name="description" content="Connect with Vicmano - Music links, social media, and more." />
-      </Helmet>
+      <SEO
+        title={`${finalContent.title} - Links`}
+        description="Connect with Vicmano - Music links, social media, and more."
+        url="https://vicmano.com/links"
+      />
       {/* Background Effects */}
       <div className="absolute inset-0 opacity-20">
         <div className="w-full h-full bg-gradient-to-br from-purple-500/10 via-blue-500/10 to-indigo-500/10"></div>
