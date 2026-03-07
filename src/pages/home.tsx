@@ -1,8 +1,12 @@
-import { FC } from "react"
-import { HeroSection, AboutSection, MediaSection, ReelsSection, ContactSection } from "../components/sections"
+import React, { FC, lazy, Suspense } from "react"
+import { HeroSection, AboutSection } from "../components/sections"
 import { ErrorBoundaryWrapper } from "../components/common"
 
 import SEO from "../components/common/SEO/SEO";
+
+const ReelsSection = lazy(() => import('../components/sections').then(module => ({ default: module.ReelsSection })));
+const MediaSection = lazy(() => import('../components/sections').then(module => ({ default: module.MediaSection })));
+const ContactSection = lazy(() => import('../components/sections').then(module => ({ default: module.ContactSection })));
 
 export const Home: FC = () => {
   return (
@@ -18,10 +22,12 @@ export const Home: FC = () => {
         <AboutSection />
       </ErrorBoundaryWrapper>
 
-      <ReelsSection />
-      <MediaSection />
-      {/* <MusicSection /> */}
-      <ContactSection />
+      <Suspense fallback={<div className="h-96 bg-black" />}>
+        <ReelsSection />
+        <MediaSection />
+        {/* <MusicSection /> */}
+        <ContactSection />
+      </Suspense>
 
       {/* <ErrorBoundaryWrapper componentName="Footer">
         <Footer />

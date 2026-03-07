@@ -54,6 +54,8 @@ const HeroSection: FC = () => {
           <img
             src={IMAGES.performance()}
             alt="Vicmano Performance"
+            width={1920}
+            height={1080}
             className="w-full h-full object-cover object-center"
             style={{
               filter: "brightness(0.6) contrast(1.1) blur(2px)",
