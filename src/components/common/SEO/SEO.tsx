@@ -13,7 +13,7 @@ interface SEOProps {
 const SEO: FC<SEOProps> = ({
     title,
     description,
-    image = '/images/logo.png', // Default image
+    image = '/images/og-logo.png', // Default optimized image for social media
     url = 'https://vicmano.com/',
     type = 'website'
 }) => {
