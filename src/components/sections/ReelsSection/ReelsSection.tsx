@@ -155,7 +155,6 @@ const ReelCard: FC<{
         const x = Math.max(0, Math.min(clientX - rect.left, rect.width));
         const percentage = x / rect.width;
         const newTime = percentage * duration;
-
         videoRef.current.currentTime = newTime;
         setCurrentTime(newTime);
     };
@@ -209,7 +208,7 @@ const ReelCard: FC<{
             {/* Audio Wave Progress Bar (Timeline) */}
             <div
                 ref={containerRef}
-                className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-black/80 to-transparent flex items-end justify-center gap-[2px] px-6 pb-4 opacity-100 transition-opacity duration-300 cursor-pointer select-none z-30"
+                className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-black/80 to-transparent flex items-end justify-center gap-[2px] pb-4 opacity-100 transition-opacity duration-300 cursor-pointer select-none z-30"
                 onMouseDown={handleMouseDown}
                 onMouseMove={handleMouseMove}
                 onMouseUp={handleMouseUp}
@@ -230,8 +229,8 @@ const ReelCard: FC<{
                         ))}
                     </div>
                 ) : (
-                    waveform.map((height, i) => {
-                        const barProgress = (i / WAVE_BARS) * 100;
+                    waveform.map((height, i, array) => {
+                        const barProgress = (i / array.length) * 100;
                         const isPlayed = progress >= barProgress;
 
                         return (
