@@ -8,7 +8,7 @@ export const getImagePath = (imageName: string): string => {
 
 // Rutas predefinidas para imágenes comunes
 export const IMAGES = {
-  logo: () => getImagePath('logo.png'),
-  vicmano: () => getImagePath('profile.png'),
+  logo: () => getImagePath('logo.webp'),
+  vicmano: () => getImagePath('profile.webp'),
   performance: () => getImagePath('performance.webp'),
 } as const;

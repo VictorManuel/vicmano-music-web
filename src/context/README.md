@@ -15,9 +15,11 @@ src/context/
 ## 🌍 LanguageContext
 
 ### Descripción
+
 Contexto para manejar la internacionalización (i18n) de la aplicación. Permite cambiar entre idiomas y acceder a traducciones de forma dinámica.
 
 ### Características
+
 - ✅ Cambio de idioma en tiempo real
 - ✅ Persistencia en localStorage
 - ✅ Detección automática del idioma del navegador
@@ -83,7 +85,7 @@ El contenido debe seguir esta estructura:
     },
     "about": {
       "title": "About",
-      "description": "Electronic music producer"
+      "description": "Electronic music DJ"
     }
   },
   "es": {
@@ -93,7 +95,7 @@ El contenido debe seguir esta estructura:
     },
     "about": {
       "title": "Acerca de",
-      "description": "Productor de música electrónica"
+      "description": "DJ de música electrónica"
     }
   }
 }
@@ -113,6 +115,7 @@ interface LanguageContextType {
 ### Métodos Disponibles
 
 #### `t(key: string, section?: string)`
+
 - **key**: Clave de la traducción
 - **section**: (opcional) Sección específica donde buscar
 - **returns**: Texto traducido o la clave si no se encuentra
@@ -126,9 +129,11 @@ t("title") // Busca en todas las secciones del idioma actual
 ```
 
 #### `setLanguage(lang: string)`
+
 Cambia el idioma de la aplicación y lo guarda en localStorage.
 
 #### `language`
+
 String que indica el idioma actual ("en" o "es").
 
 ---
@@ -136,6 +141,7 @@ String que indica el idioma actual ("en" o "es").
 ## 🌐 GlobalContext
 
 ### Descripción
+
 Contexto global para manejar estado compartido entre componentes. Actualmente maneja un valor numérico simple, pero puede extenderse según las necesidades.
 
 ### Uso Básico
@@ -225,6 +231,7 @@ interface GlobalContextType {
 ### Agregar Nuevos Idiomas
 
 1. Agregar el idioma al contenido:
+
 ```json
 {
   "fr": {
@@ -236,7 +243,8 @@ interface GlobalContextType {
 }
 ```
 
-2. Actualizar la lógica de detección en `LanguageContext.tsx`:
+1. Actualizar la lógica de detección en `LanguageContext.tsx`:
+
 ```tsx
 const browserLang = navigator.language.split("-")[0]
 if (browserLang === "es") {
@@ -303,4 +311,4 @@ function App() {
     </LanguageProvider>
   )
 }
-``` 
+```
