@@ -14,7 +14,7 @@ const SEO: FC<SEOProps> = ({
     title,
     description,
     image = '/images/logo.png', // Default image
-    url = 'https://vicmano.com',
+    url = 'https://vicmano.com/',
     type = 'website'
 }) => {
     const { t } = useLanguage();
